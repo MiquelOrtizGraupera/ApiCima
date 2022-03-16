@@ -11,6 +11,7 @@ app.use(express.json());
 /*SERVIR ESTÁTICOS! HTML CSS*/
 app.use('/app', express.static('src/public'));
 
+/*root PAGE*/
 app.get('/',(request, response)=>{
     console.log(request.headers);
     response.header({
