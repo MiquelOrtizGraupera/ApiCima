@@ -40,17 +40,19 @@ class ManProducts{
     }
 
     delete(id){
-        let lista = this.manProducts;
-        console.log("Apunto de entrar")
-        for (let i = 0; i < lista.length ; i++) {
-            console.log("Uf estoy dentro")
-            if(lista[i].id.toString() === id){
-                console.log("En el if")
-                this.manProducts.splice(lista[i].id);
-                console.log("No hablo español")
-                return this.manProducts;
+        return new Promise((resolve, reject) => {
+            let lista = this.manProducts;
+            for (let i = 0; i < lista.length ; i++) {
+                if(lista[i].id.toString() === id){
+                    this.manProducts.splice(lista[i].id);
+                    break;
+                }
+                console.log("Sortint del if");
             }
-        }
+            console.log("sortint del bucle");
+            resolve('Elimination perfectamente');
+        });
+
     }
 }
 
