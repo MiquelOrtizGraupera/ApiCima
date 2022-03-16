@@ -40,7 +40,17 @@ class ManProducts{
     }
 
     delete(id){
-
+        let lista = this.manProducts;
+        console.log("Apunto de entrar")
+        for (let i = 0; i < lista.length ; i++) {
+            console.log("Uf estoy dentro")
+            if(lista[i].id.toString() === id){
+                console.log("En el if")
+                this.manProducts.splice(lista[i].id);
+                console.log("No hablo español")
+                return this.manProducts;
+            }
+        }
     }
 }
 
