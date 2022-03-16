@@ -42,12 +42,12 @@ router.patch('/:id',(request,response)=>{
 //Delete one man product
 router.delete('/:id',(request,response)=>{
     products.delete(request.url.slice(1))
-        // .then(() =>{
-        //     response.json("Elemento borrado perfectamente")
-        // })
-        // .catch(() =>{
-        //     response.json("Uops! algo salio mal");
-        // });
+        .then(() =>{
+            response.json("Elemento borrado perfectamente")
+        })
+        .catch(() =>{
+            response.json("Uops! algo salio mal");
+        });
 });
 
 module.exports = router;
