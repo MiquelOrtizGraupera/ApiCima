@@ -9,7 +9,7 @@ const port = 3000;
 app.use(express.json());
 
 /*SERVIR ESTÁTICOS! HTML CSS*/
-app.use('/app', express.static('public'));
+app.use('/app', express.static('src/public'));
 
 app.get('/',(request, response)=>{
     console.log(request.headers);
