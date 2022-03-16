@@ -35,7 +35,23 @@ class ManProducts{
         }
     }
 
-    update(id, changes){
+    update(id, changeUser, changeProduct, changeDescription, changePrice){
+       return new Promise(((resolve, reject) => {
+           let lista  = this.manProducts;
+           for (let i = 0; i < lista.length; i++) {
+               if(lista[i].id.toString() === id){
+                   const info ={
+                       id: lista[i].id,
+                       user: changeUser,
+                       product: changeProduct,
+                       description: changeDescription,
+                       price: changePrice
+                   }
+                   lista[i] = info;
+                   resolve('Changes has been done! '+info) ;
+               }
+           }
+       }))
 
     }
 
@@ -47,9 +63,7 @@ class ManProducts{
                     this.manProducts.splice(lista[i].id);
                     break;
                 }
-                console.log("Sortint del if");
             }
-            console.log("sortint del bucle");
             resolve('Elimination perfectamente');
         });
 

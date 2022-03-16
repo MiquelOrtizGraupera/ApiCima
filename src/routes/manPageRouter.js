@@ -36,7 +36,13 @@ router.post('/',(request,response)=>{
 
 //Update one man product
 router.patch('/:id',(request,response)=>{
-    //To do...
+    products.update(request.url.slice(1),request.body.user, request.body.product, request.body.description, request.body.price)
+        .then(()=>{
+            response.json("Updated perfecto!")
+        })
+        .catch(() =>{
+            response.json("Uop! algo salio mal!")
+        })
 });
 
 //Delete one man product
