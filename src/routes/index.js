@@ -6,6 +6,7 @@ const womanPage = require('./womanPageRouter');
 const kidsPage = require('./kidsPageRouter');
 
 function routerApi(app){
+    /*Nos permite separar cabeceras, URL, trabajar y separar peticiones*/
     const router = express.Router();
 
     app.use('/api/v1',router);

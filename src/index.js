@@ -1,12 +1,22 @@
 const express = require('express');
+const bodyParser = require('body-parser');
 const routerApi = require('./routes')
 
 const app = express();
-const port = process.env.PORT || 3000;
+app.use(bodyParser.json());
+const port = 3000;
 
 app.use(express.json());
 
+/*SERVIR ESTÁTICOS! HTML CSS*/
+app.use('/app', express.static('public'));
+
 app.get('/',(request, response)=>{
+    console.log(request.headers);
+    response.header({
+        "custom-header":"Nuestro valor personalizado",
+    });
+    console.log(request.body);
     response.send('Esta seria la pag. Principal o LOGIN, apartir de aqui empieza la navegación');
 });
 
@@ -15,4 +25,3 @@ app.listen(port,()=>{
 });
 
 routerApi(app);
-/*OJO*/
