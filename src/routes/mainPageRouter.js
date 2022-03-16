@@ -14,6 +14,7 @@ const router = express.Router();
 //Get all Products
 router.get('/',(request, response)=>{
     //To do...
+    response.json('Es la pag principal del index.html');
 });
 
 //Get One Product

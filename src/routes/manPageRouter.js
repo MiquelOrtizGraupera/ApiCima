@@ -19,11 +19,19 @@ router.get('/',(request,  response)=>{
 //Get one man product
 router.get('/:id',(request,response)=>{
     //...To do
+    const p = products.findOne(request.url.slice(1));
+    response.send(p);
 });
 
 //Create one man product
 router.post('/',(request,response)=>{
-    //..To do
+    products.create(request.body.user,request.body.product, request.body.description,request.body.price)
+        .then(() =>{
+            response.json('Creado perfectamente');
+        })
+        .catch(() =>{
+            response.json("Uop! algo salio mal");
+        });
 });
 
 //Update one man product
