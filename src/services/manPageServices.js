@@ -7,7 +7,7 @@ class ManProducts{
     create(user, product, description, price){
         return new Promise((resolve, reject)=>{
             if(user === null || product === null ||price === null){
-                return reject("Faltan datos, único no oblitario és descripción");
+                return reject("Faltan datos, único no obligatorio és descripción");
             }
             const id = this.manProducts.length + 1
             const fullInfo = {
