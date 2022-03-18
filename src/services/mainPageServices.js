@@ -1,29 +1,30 @@
+const ManProducts = require("./manPageServices");
+const KidProducts = require("./kidsPageServices");
+const WomanProducts = require("./womanPageServices");
+
 class AllProducts{
     constructor() {
-        this.mProducts = [];
-        this.womanProducts = [];
-        this.kidsProducts = [];
+        const manProd = new ManProducts();
+        this.mProducts = manProd.find();
+
+        const kidProd = new KidProducts();
+        this.kProducts = kidProd.find();
+
+        const wProd = new WomanProducts();
+        this.wProducts = wProd.find();
     }
 
-    create(data){
+  findMan(){
+        return this.mProducts;
+  }
 
-    }
+  findWoman(){
+        return this.wProducts;
+  }
 
-    find(){
-
-    }
-
-    findOne(){
-
-    }
-
-    update(id, changes){
-
-    }
-
-    delete(id){
-
-    }
+  findKids(){
+        return this.kProducts;
+  }
 }
 
 module.exports = AllProducts;

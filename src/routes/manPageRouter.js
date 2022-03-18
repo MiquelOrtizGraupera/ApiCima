@@ -11,14 +11,12 @@ const router = express.Router();
 
 //Get all man products
 router.get('/',(request,  response)=>{
-    //...To do
     const p = products.find();
     response.send(p);
 });
 
 //Get one man product
 router.get('/:id',(request,response)=>{
-    //...To do
     const p = products.findOne(request.url.slice(1));
     response.send(p);
 });

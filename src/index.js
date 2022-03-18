@@ -21,6 +21,7 @@ app.get('/',(request, response)=>{
     response.send('Esta seria la pag. Principal o LOGIN, apartir de aqui empieza la navegación');
 });
 
+/*LOG PUERTO*/
 app.listen(port,()=>{
     console.log('Mi puerto es: '+ port);
 });

@@ -13,10 +13,17 @@ const router = express.Router();
 
 //Get all Products
 router.get('/',(request, response)=>{
-    //To do...
+    const mP = products.findMan();
+    const wP = products.findWoman();
+    const kP = products.findKids();
+
     response.json('Es la pag principal del index.html');
 });
 
+
+module.exports = router;
+
+/*   WE DON'T NEED THIS BY THE MOMENT
 //Get One Product
 router.get('/:id',(request, response)=>{
     //To do...
@@ -36,5 +43,4 @@ router.patch('/:id',(request,response)=>{
 router.delete('/:id',(request,response)=>{
     //To do...
 });
-
-module.exports = router;
+*/
