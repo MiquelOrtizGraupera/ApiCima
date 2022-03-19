@@ -1,6 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const routerApi = require('./routes')
+const routerApi = require('./routes');
 
 const app = express();
 app.use(bodyParser.json());
@@ -10,6 +10,7 @@ app.use(express.json());
 
 /*SERVIR ESTÁTICOS! HTML CSS*/
 app.use('/app', express.static('src/public'));
+
 
 /*root PAGE*/
 app.get('/',(request, response)=>{

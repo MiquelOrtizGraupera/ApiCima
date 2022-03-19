@@ -2,7 +2,6 @@
 const AllProducts = require('../services/manPageServices');
 const express = require("express");
 const ManProducts = require("../services/manPageServices");
-
 //Instance AllProducts class
 const products = new ManProducts();
 

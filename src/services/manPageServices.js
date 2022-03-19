@@ -1,3 +1,4 @@
+const Model = require("../BBDD/model");
 
 class ManProducts{
     constructor() {
@@ -19,6 +20,8 @@ class ManProducts{
             }
 
             resolve( this.manProducts.push(fullInfo));
+            const myProduct = new Model(fullInfo);
+            myProduct.save();
         });
     }
 
