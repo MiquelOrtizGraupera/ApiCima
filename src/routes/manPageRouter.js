@@ -1,5 +1,4 @@
 //Import mainPageServices to use it's logic
-const AllProducts = require('../services/manPageServices');
 const express = require("express");
 const ManProducts = require("../services/manPageServices");
 //Instance AllProducts class
@@ -49,7 +48,7 @@ router.delete('/:id',(request,response)=>{
             response.json("Elemento borrado perfectamente")
         })
         .catch(() =>{
-            response.json("Uops! algo salio mal");
+            response.json("Uop! algo salio mal");
         });
 });
 
