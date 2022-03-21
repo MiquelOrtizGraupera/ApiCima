@@ -12,7 +12,6 @@ class ManProducts{
             }
             const id = this.manProducts.length + 1
             const fullInfo = {
-                id : id,
                 user: user,
                 product: product,
                 description: description,
@@ -25,8 +24,10 @@ class ManProducts{
         });
     }
 
-    find(){
-        return this.manProducts;
+    async find(){
+       const products =  await Model.find();
+       console.log(products);
+       return products;
     }
 
     findOne(id){
