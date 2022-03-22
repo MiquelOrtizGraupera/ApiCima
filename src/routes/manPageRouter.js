@@ -9,13 +9,20 @@ const router = express.Router();
 
 //Get all man products
 router.get('/',(request,  response)=>{
-    const p = products.find();
-    response.send(p);
+    console.log("PRoductos a continuacion");
+    products.find()
+        .then(() =>{
+            response.send()
+        })
+        .catch(() =>{
+            console.log("WRONG CATCH REQUEST")
+        })
 });
 
 //Get one man product
 router.get('/:id',(request,response)=>{
     const p = products.findOne(request.url.slice(1));
+    console.log(p);
     response.send(p);
 });
 

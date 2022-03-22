@@ -1,4 +1,5 @@
 const Model = require("../BBDD/model");
+const bodyParser = require('body-parser');
 
 class ManProducts{
     constructor() {
@@ -12,6 +13,7 @@ class ManProducts{
             }
             const id = this.manProducts.length + 1
             const fullInfo = {
+                id: id,
                 user: user,
                 product: product,
                 description: description,
@@ -25,23 +27,43 @@ class ManProducts{
     }
 
     async find(){
-       const products =  await Model.find();
-       console.log(products);
-       return products;
-    }
+        const respuesta = await Model.find();
+       // console.log(respuesta);
+        return respuesta;
+       /* const fullInfo = {
+            _id: String,
+            user: String,
+            products: String,
+            description:String,
+            price:Number
+        }
 
-    findOne(id){
-        let lista = this.manProducts;
+       const products =  await Model.find();
+        this.manProducts = products;
+
+        for (let i = 0; i < this.manProducts.length ; i++) {
+            console.log(this.manProducts[i]);
+            console.log("Round "+ i);
+
+        }
+       //bodyParser.json(products);
+        return this.manProducts.json*/
+    }
+   async findOne(id){
+        let lista = await Model.find();
         for (let i = 0; i < lista.length ; i++) {
             if(lista[i].id.toString() === id){
-                return lista[i];
+                console.log(lista[i]);
             }
         }
     }
 
     update(id, changeUser, changeProduct, changeDescription, changePrice){
        return new Promise(((resolve, reject) => {
-           let lista  = this.manProducts;
+           let lista  = Model.find();
+           if(lista == null){
+               reject("Ups algo salio mal!")
+           }
            for (let i = 0; i < lista.length; i++) {
                if(lista[i].id.toString() === id){
                    const info ={
@@ -54,6 +76,8 @@ class ManProducts{
                    lista[i] = info;
                    resolve('Changes has been done! '+info) ;
                }
+               const myProduct = new Model(lista);
+               myProduct.save();
            }
        }))
 

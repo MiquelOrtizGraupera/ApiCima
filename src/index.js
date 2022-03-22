@@ -2,10 +2,10 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const routerApi = require('./routes');
 
-const app = express();
-app.use(bodyParser.json());
 const port = 3000;
 
+const app = express();
+app.use(bodyParser.json());
 app.use(express.json());
 
 /*SERVIR ESTÁTICOS! HTML CSS*/
