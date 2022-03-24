@@ -50,6 +50,7 @@ class ManProducts{
         lista[id-1].price = changePrice;
         console.log(lista[id-1].user)
         console.log(lista);
+        lista.update();
         return lista;
 
      /* return new Promise(((resolve, reject) => {
