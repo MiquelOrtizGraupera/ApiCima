@@ -9,10 +9,10 @@ const router = express.Router();
 
 //Get all man products
 router.get('/',(request,  response)=>{
-    console.log("PRoductos a continuacion");
-    products.find()
+     products.find()
         .then(() =>{
-            response.send()
+            console.log("PRoductos a continuacion");
+            response.send(products);
         })
         .catch(() =>{
             console.log("WRONG CATCH REQUEST")
@@ -21,9 +21,13 @@ router.get('/',(request,  response)=>{
 
 //Get one man product
 router.get('/:id',(request,response)=>{
-    const p = products.findOne(request.url.slice(1));
-    console.log(p);
-    response.send(p);
+    products.findOne(request.url.slice(1))
+        .then(() =>{
+            response.send(products);
+        })
+        .catch(() =>{
+            console.log("Ups algo salio mal!")
+        })
 });
 
 //Create one man product
@@ -41,7 +45,8 @@ router.post('/',(request,response)=>{
 router.patch('/:id',(request,response)=>{
     products.update(request.url.slice(1),request.body.user, request.body.product, request.body.description, request.body.price)
         .then(()=>{
-            response.json("Updated perfecto!")
+            //response.json("Updated perfecto!")
+            response.send(products);
         })
         .catch(() =>{
             response.json("Uop! algo salio mal!")
