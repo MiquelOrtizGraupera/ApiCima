@@ -43,9 +43,18 @@ router.post('/',(request,response)=>{
 
 //Update one man product
 router.patch('/:id',(request,response)=>{
-    products.update(request.params.id,request.body.user, request.body.product, request.body.description, request.body.price)
+   /*products.update({id: request.params.id},{
+       $set:{
+           user:request.body.user,
+           product: request.body.product,
+           description: request.body.description,
+           price:request.body.price
+       }
+   })*/
+
+   products.update(request.params.id,request.body.user, request.body.product, request.body.description, request.body.price)
         .then(()=>{
-            response.success(products);
+            response.send(products);
         })
         .catch(() =>{
             response.send("Algo salio mal");
@@ -54,12 +63,13 @@ router.patch('/:id',(request,response)=>{
 
 //Delete one man product
 router.delete('/:id',(request,response)=>{
-    products.delete(request.url.slice(1))
+    products.delete(request.params.id)
         .then(() =>{
             response.json("Elemento borrado perfectamente")
         })
-        .catch(() =>{
+        .catch(e =>{
             response.json("Uop! algo salio mal");
+            response.send(e);
         });
 });
 

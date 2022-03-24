@@ -39,33 +39,24 @@ class ManProducts{
            if (this.manProducts[i].id === parseInt(id)) {
                //console.log(this.manProducts[i]);
                this.manProducts = this.manProducts[i];
-               console.log(this.manProducts);
                return this.manProducts;
            }
        }
 
-        /*let lista = await Model.find();
-        this.manProducts = lista;
-       const uno = this.manProducts[_id];
-       console.log(uno._id);
-       for (let i = 0; i < this.manProducts.length ; i++) {
-           if(this.manProducts[i].user === uno.user){
-               return this.manProducts[i]
-           }
-       }*/
     }
 
 
     async update(id, changeUser, changeProduct, changeDescription, changePrice){
-        const lista = await Model.find();
+        let lista = await Model.find();
         lista[id-1].user = changeUser;
         lista[id-1].product = changeProduct;
         lista[id-1].description = changeDescription;
         lista[id-1].price = changePrice;
-        // console.log(lista[id-1].user)
-        // console.log(lista[id-1].description);
-        // console.log(lista);
+
         this.manProducts = lista;
+
+        console.log(this.manProducts);
+
         return this.manProducts;
 
         // return new Promise((resolve, reject) => {
@@ -95,22 +86,8 @@ class ManProducts{
     }
 
    async delete(id){
-       const lista = await Model.find();
+     await Model.deleteOne({id: id});
 
-       console.log(lista[id-1]);
-       lista.splice(lista[id-1]);
-       lista.save();
-        /* return new Promise((resolve, reject) => {
-            let lista = this.manProducts;
-            for (let i = 0; i < lista.length ; i++) {
-                if(lista[i].id === id){
-                    console.log(this.manProducts.splice(lista[i]))
-                    this.manProducts.splice(lista[i]);
-                }
-            }
-
-            resolve.save(lista);
-        });*/
     }
 }
 
