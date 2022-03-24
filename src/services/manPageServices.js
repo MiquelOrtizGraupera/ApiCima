@@ -1,6 +1,4 @@
 const Model = require("../BBDD/model");
-const bodyParser = require('body-parser');
-const {response} = require("express");
 
 class ManProducts{
     constructor() {
@@ -28,21 +26,21 @@ class ManProducts{
     }
 
     async find(){
-       const products =  await Model.find();
-        this.manProducts = products;
-
+        this.manProducts = await Model.find();
+        //console.log(this.manProducts);
         return this.manProducts;
     }
+
    async findOne(id){
         this.manProducts = await Model.find();
         console.log(id)
-      /* const idF = id.charAt(0);
-        console.log(idF);*/
 
        for (let i = 0; i < this.manProducts.length ; i++) {
-           if(this.manProducts[i].id === parseInt(id)){
-                console.log(this.manProducts[i]);
-                return this.manProducts[i];
+           if (this.manProducts[i].id === parseInt(id)) {
+               //console.log(this.manProducts[i]);
+               this.manProducts = this.manProducts[i];
+               console.log(this.manProducts);
+               return this.manProducts;
            }
        }
 
@@ -58,39 +56,41 @@ class ManProducts{
     }
 
 
-    async update(_id, changeUser, changeProduct, changeDescription, changePrice){
+    async update(id, changeUser, changeProduct, changeDescription, changePrice){
         const lista = await Model.find();
         lista[id-1].user = changeUser;
         lista[id-1].product = changeProduct;
         lista[id-1].description = changeDescription;
         lista[id-1].price = changePrice;
-        console.log(lista[id-1].user)
-        console.log(lista[id-1].description);
-        return lista;
+        // console.log(lista[id-1].user)
+        // console.log(lista[id-1].description);
+        // console.log(lista);
+        this.manProducts = lista;
+        return this.manProducts;
 
-     /* return new Promise(((resolve, reject) => {
-           let lista  = resolve(Model.find());
-           console.log(lista);
-           if(lista == null){
-               reject("Ups algo salio mal!")
-           }
-           for (let i = 0; i < lista.length; i++) {
-               console.log(lista[i]);
-               if(lista[i-1].id === id){
-                   const info ={
-                       id: lista[i+1].id,
-                       user: changeUser,
-                       product: changeProduct,
-                       description: changeDescription,
-                       price: changePrice
-                   }
-                   lista[i] = info;
-                   resolve('Changes has been done! '+info) ;
-               }
-               const myProduct = new Model(lista);
-               myProduct.save();
-           }
-       }))*/
+        // return new Promise((resolve, reject) => {
+        //     let lista =   Model.find();
+        //     // if(!changeUser || !changeProduct|| !changeDescription ||!changePrice){
+        //     //   reject("Ups algo salio mal!")
+        //     // }
+        //     console.log(lista);
+        //     for (let i = 0; i < lista.length; i++) {
+        //         console.log(lista[i]);
+        //         if (lista[i - 1].id === id) {
+        //             const info = {
+        //                 id: lista[i + 1].id,
+        //                 user: changeUser,
+        //                 product: changeProduct,
+        //                 description: changeDescription,
+        //                 price: changePrice
+        //             }
+        //             lista[i] = info;
+        //             resolve('Changes has been done! ' + info);
+        //         }
+        //         const myProduct = new Model(lista);
+        //         myProduct.save();
+        //     }
+        // })
 
     }
 
