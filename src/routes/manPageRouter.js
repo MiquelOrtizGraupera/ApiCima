@@ -21,13 +21,14 @@ router.get('/',(request,  response)=>{
 
 //Get one man product
 router.get('/:id',(request,response)=>{
-    products.findOne(request.url.slice(1))
+    response.send(products.findOne(request.params.id));
+    /*products.findOne(request.url.slice(1))
         .then(() =>{
             response.send(products);
         })
         .catch(() =>{
             console.log("Ups algo salio mal!")
-        })
+        })*/
 });
 
 //Create one man product

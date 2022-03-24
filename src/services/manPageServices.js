@@ -36,12 +36,13 @@ class ManProducts{
    async findOne(id){
         this.manProducts = await Model.find();
         console.log(id)
-       const idF = id.charAt(0);
-        console.log(idF);
+      /* const idF = id.charAt(0);
+        console.log(idF);*/
 
        for (let i = 0; i < this.manProducts.length ; i++) {
-           if(this.manProducts[i].id === parseInt(idF)){
-                console.log(this.manProducts[i].user);
+           if(this.manProducts[i].id === parseInt(id)){
+                console.log(this.manProducts[i]);
+                return this.manProducts[i];
            }
        }
 
