@@ -37,7 +37,6 @@ class ManProducts{
 
        for (let i = 0; i < this.manProducts.length ; i++) {
            if (this.manProducts[i].id === parseInt(id)) {
-               //console.log(this.manProducts[i]);
                this.manProducts = this.manProducts[i];
                return this.manProducts;
            }
@@ -47,42 +46,34 @@ class ManProducts{
 
 
     async update(id, changeUser, changeProduct, changeDescription, changePrice){
-        let lista = await Model.find();
-        lista[id-1].user = changeUser;
-        lista[id-1].product = changeProduct;
-        lista[id-1].description = changeDescription;
-        lista[id-1].price = changePrice;
+        return new Promise(async (resolve,reject) =>{
+            const filter = {id: id-1}
+            const updateDoc ={
+                user: changeUser,
+                product: changeProduct,
+                description: changeDescription,
+                price: changePrice
+            };
 
-        this.manProducts = lista;
+            const newInfo = await Model;
+                newInfo.updateOne(filter, updateDoc)
+                .catch(e =>{
+                    reject(e);
+                })
+            resolve(newInfo);
+        })
 
-        console.log(this.manProducts);
-
-        return this.manProducts;
-
-        // return new Promise((resolve, reject) => {
-        //     let lista =   Model.find();
-        //     // if(!changeUser || !changeProduct|| !changeDescription ||!changePrice){
-        //     //   reject("Ups algo salio mal!")
-        //     // }
-        //     console.log(lista);
-        //     for (let i = 0; i < lista.length; i++) {
-        //         console.log(lista[i]);
-        //         if (lista[i - 1].id === id) {
-        //             const info = {
-        //                 id: lista[i + 1].id,
-        //                 user: changeUser,
-        //                 product: changeProduct,
-        //                 description: changeDescription,
-        //                 price: changePrice
-        //             }
-        //             lista[i] = info;
-        //             resolve('Changes has been done! ' + info);
-        //         }
-        //         const myProduct = new Model(lista);
-        //         myProduct.save();
-        //     }
-        // })
-
+        /*####################################################*/
+        //let lista = await Model.find();
+        // lista[id-1].user = changeUser;
+        // lista[id-1].product = changeProduct;
+        // lista[id-1].description = changeDescription;
+        // lista[id-1].price = changePrice;
+        //
+        // lista.updateOne(id-1)
+        // this.manProducts = lista;
+        //
+        // return this.manProducts;
     }
 
    async delete(id){
