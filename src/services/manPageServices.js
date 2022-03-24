@@ -1,5 +1,6 @@
 const Model = require("../BBDD/model");
 const bodyParser = require('body-parser');
+const {response} = require("express");
 
 class ManProducts{
     constructor() {
@@ -33,24 +34,37 @@ class ManProducts{
         return this.manProducts;
     }
    async findOne(id){
-        let lista = await Model.find();
+        this.manProducts = await Model.find();
+        console.log(id)
+       const idF = id.charAt(0);
+        console.log(idF);
+
+       for (let i = 0; i < this.manProducts.length ; i++) {
+           if(this.manProducts[i].id === parseInt(idF)){
+                console.log(this.manProducts[i].user);
+           }
+       }
+
+        /*let lista = await Model.find();
         this.manProducts = lista;
-        console.log(this.manProducts.length);
-       const uno = this.manProducts[id-1];
-        console.log(uno.user);
-        return uno;
-        }
+       const uno = this.manProducts[_id];
+       console.log(uno._id);
+       for (let i = 0; i < this.manProducts.length ; i++) {
+           if(this.manProducts[i].user === uno.user){
+               return this.manProducts[i]
+           }
+       }*/
+    }
 
 
-    async update(id, changeUser, changeProduct, changeDescription, changePrice){
+    async update(_id, changeUser, changeProduct, changeDescription, changePrice){
         const lista = await Model.find();
         lista[id-1].user = changeUser;
         lista[id-1].product = changeProduct;
         lista[id-1].description = changeDescription;
         lista[id-1].price = changePrice;
         console.log(lista[id-1].user)
-        console.log(lista);
-        lista.update();
+        console.log(lista[id-1].description);
         return lista;
 
      /* return new Promise(((resolve, reject) => {

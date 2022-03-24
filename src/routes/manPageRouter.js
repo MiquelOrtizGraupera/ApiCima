@@ -46,6 +46,7 @@ router.patch('/:id',(request,response)=>{
     products.update(request.url.slice(1),request.body.user, request.body.product, request.body.description, request.body.price)
         .then(()=>{
             //response.json("Updated perfecto!")
+            console.log(request.params._id);
             response.send(products);
         })
         .catch(() =>{
