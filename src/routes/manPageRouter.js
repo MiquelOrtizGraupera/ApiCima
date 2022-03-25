@@ -11,7 +11,6 @@ const router = express.Router();
 router.get('/',(request,  response)=>{
     products.find()
         .then(() =>{
-            console.log("Hola")
             response.send(products);
         })
         .catch(() =>{
