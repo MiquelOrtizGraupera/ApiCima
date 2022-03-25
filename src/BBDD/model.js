@@ -20,7 +20,8 @@ const mySchema = new Schema({
         require: true
     },
     description: String,
-    price: Number
+    price: Number,
+    file : String
 });
 
 const modelSchemaMan = mongoose.model('ProductosMan', mySchema);

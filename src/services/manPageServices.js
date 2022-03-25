@@ -5,18 +5,25 @@ class ManProducts{
         this.manProducts = [];
     }
 
-    create(user, product, description, price){
+    create(user, product, description, price, file){
         return new Promise((resolve, reject)=>{
             if(user === null || product === null || price === null){
                 return reject("Faltan datos, único no obligatorio és descripción");
             }
+
+            let fileURL ="";
+            if(file){
+                fileURL = "http://localhost:3000/src/uploads/" +file.filename;
+            }
+
             const id = this.manProducts.length + 1
             const fullInfo = {
                 id: id,
                 user: user,
                 product: product,
                 description: description,
-                price: price
+                price: price,
+                file: fileURL
             }
 
             resolve( this.manProducts.push(fullInfo));
