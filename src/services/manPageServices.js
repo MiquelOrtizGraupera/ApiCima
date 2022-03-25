@@ -55,34 +55,10 @@ class ManProducts{
 
         this.manProducts = lista;
 
-        console.log(this.manProducts);
+        const myProduct = new Model(this.manProducts[id-1]);
+        await myProduct.save()
 
         return this.manProducts;
-
-        // return new Promise((resolve, reject) => {
-        //     let lista =   Model.find();
-        //     // if(!changeUser || !changeProduct|| !changeDescription ||!changePrice){
-        //     //   reject("Ups algo salio mal!")
-        //     // }
-        //     console.log(lista);
-        //     for (let i = 0; i < lista.length; i++) {
-        //         console.log(lista[i]);
-        //         if (lista[i - 1].id === id) {
-        //             const info = {
-        //                 id: lista[i + 1].id,
-        //                 user: changeUser,
-        //                 product: changeProduct,
-        //                 description: changeDescription,
-        //                 price: changePrice
-        //             }
-        //             lista[i] = info;
-        //             resolve('Changes has been done! ' + info);
-        //         }
-        //         const myProduct = new Model(lista);
-        //         myProduct.save();
-        //     }
-        // })
-
     }
 
    async delete(id){
