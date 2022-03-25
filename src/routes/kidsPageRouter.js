@@ -10,19 +10,30 @@ const router = express.Router();
 
 //Get all kids products
 router.get('/',(request,  response)=>{
-    const p = product.find();
-    response.send(p);
+    product.find()
+        .then(() =>{
+            console.log("Hola")
+            response.send(product);
+        })
+        .catch(() =>{
+            console.log("WRONG CATCH REQUEST")
+        })
 });
 
 //Get one kids product
 router.get('/:id',(request,response)=>{
-    const p = product.findOne(request.url.slice(1));
-    response.send(p);
+    product.findOne(request.params.id)
+        .then(() =>{
+            response.send(product);
+        })
+        .catch(() =>{
+            console.log("Ups algo salio mal!")
+        })
 });
 
 //Create one kids product
 router.post('/',(request,response)=>{
-    products.create(request.body.user,request.body.product, request.body.description,request.body.price)
+    product.create(request.body.user,request.body.product, request.body.description,request.body.price)
         .then(() =>{
             response.json('Creado perfectamente');
         })
@@ -33,23 +44,24 @@ router.post('/',(request,response)=>{
 
 //Update one kids product
 router.patch('/:id',(request,response)=>{
-    products.update(request.url.slice(1),request.body.user, request.body.product, request.body.description, request.body.price)
+    product.update(request.params.id,request.body.user, request.body.product, request.body.description, request.body.price)
         .then(()=>{
-            response.json("Updated perfecto!")
+            response.send(product);
         })
         .catch(() =>{
-            response.json("Uop! algo salio mal!")
+            response.send("Algo salio mal");
         })
 });
 
 //Delete one kids product
 router.delete('/:id',(request,response)=>{
-    products.delete(request.url.slice(1))
+    product.delete(request.params.id)
         .then(() =>{
             response.json("Elemento borrado perfectamente")
         })
-        .catch(() =>{
-            response.json("Uops! algo salio mal");
+        .catch(e =>{
+            response.json("Uop! algo salio mal");
+            response.send(e);
         });
 });
 

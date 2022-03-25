@@ -10,14 +10,25 @@ const router = express.Router();
 
 //Get all woman products
 router.get('/',(request,  response)=>{
-    const p = products.find();
-    response.send(p);
+    products.find()
+        .then(() =>{
+            console.log("Hola")
+            response.send(products);
+        })
+        .catch(() =>{
+            console.log("WRONG CATCH REQUEST")
+        })
 });
 
 //Get one woman product
 router.get('/:id',(request,response)=>{
-    const p = products.findOne(request.url.slice(1));
-    response.send(p);
+    products.findOne(request.params.id)
+        .then(() =>{
+            response.send(products);
+        })
+        .catch(() =>{
+            console.log("Ups algo salio mal!")
+        })
 });
 
 //Create one woman product
@@ -33,23 +44,24 @@ router.post('/',(request,response)=>{
 
 //Update one woman product
 router.patch('/:id',(request,response)=>{
-    products.update(request.url.slice(1),request.body.user, request.body.product, request.body.description, request.body.price)
+    products.update(request.params.id,request.body.user, request.body.product, request.body.description, request.body.price)
         .then(()=>{
-            response.json("Updated perfecto!")
+            response.send(products);
         })
         .catch(() =>{
-            response.json("Uop! algo salio mal!")
+            response.send("Uop! algo salio mal!");
         })
 });
 
 //Delete one woman product
 router.delete('/:id',(request,response)=>{
-    products.delete(request.url.slice(1))
+    products.delete(request.params.id)
         .then(() =>{
             response.json("Elemento borrado perfectamente")
         })
-        .catch(() =>{
+        .catch(e =>{
             response.json("Uops! algo salio mal");
+            response.send(e);
         });
 });
 

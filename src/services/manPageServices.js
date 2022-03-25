@@ -27,24 +27,20 @@ class ManProducts{
 
     async find(){
         this.manProducts = await Model.find();
-        //console.log(this.manProducts);
         return this.manProducts;
     }
 
    async findOne(id){
         this.manProducts = await Model.find();
-        console.log(id)
 
        for (let i = 0; i < this.manProducts.length ; i++) {
            if (this.manProducts[i].id === parseInt(id)) {
-               //console.log(this.manProducts[i]);
                this.manProducts = this.manProducts[i];
                return this.manProducts;
            }
        }
 
     }
-
 
     async update(id, changeUser, changeProduct, changeDescription, changePrice){
         let lista = await Model.find();
