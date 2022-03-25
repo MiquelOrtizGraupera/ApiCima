@@ -13,11 +13,13 @@ const router = express.Router();
 
 //Get all Products
 router.get('/',(request, response)=>{
-    const mP = products.findMan();
-    const wP = products.findWoman();
-    const kP = products.findKids();
-
-    response.json('Es la pag principal del index.html');
+    products.find()
+        .then(() =>{
+            response.send(products);
+        })
+        .catch(e =>{
+            request.send(e);
+        })
 });
 
 

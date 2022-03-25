@@ -27,13 +27,11 @@ class ManProducts{
 
     async find(){
         this.manProducts = await Model.find();
-        //console.log(this.manProducts);
         return this.manProducts;
     }
 
    async findOne(id){
         this.manProducts = await Model.find();
-        console.log(id)
 
        for (let i = 0; i < this.manProducts.length ; i++) {
            if (this.manProducts[i].id === parseInt(id)) {
@@ -44,36 +42,19 @@ class ManProducts{
 
     }
 
-
     async update(id, changeUser, changeProduct, changeDescription, changePrice){
-        return new Promise(async (resolve,reject) =>{
-            const filter = {id: id-1}
-            const updateDoc ={
-                user: changeUser,
-                product: changeProduct,
-                description: changeDescription,
-                price: changePrice
-            };
+        let lista = await Model.find();
+        lista[id-1].user = changeUser;
+        lista[id-1].product = changeProduct;
+        lista[id-1].description = changeDescription;
+        lista[id-1].price = changePrice;
 
-            const newInfo = await Model;
-                newInfo.updateOne(filter, updateDoc)
-                .catch(e =>{
-                    reject(e);
-                })
-            resolve(newInfo);
-        })
+        this.manProducts = lista;
 
-        /*####################################################*/
-        //let lista = await Model.find();
-        // lista[id-1].user = changeUser;
-        // lista[id-1].product = changeProduct;
-        // lista[id-1].description = changeDescription;
-        // lista[id-1].price = changePrice;
-        //
-        // lista.updateOne(id-1)
-        // this.manProducts = lista;
-        //
-        // return this.manProducts;
+        const myProduct = new Model(this.manProducts[id-1]);
+        await myProduct.save()
+
+        return this.manProducts;
     }
 
    async delete(id){

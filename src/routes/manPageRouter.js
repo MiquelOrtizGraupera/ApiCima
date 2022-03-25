@@ -11,7 +11,6 @@ const router = express.Router();
 router.get('/',(request,  response)=>{
     products.find()
         .then(() =>{
-            console.log("Hola")
             response.send(products);
         })
         .catch(() =>{
@@ -43,15 +42,6 @@ router.post('/',(request,response)=>{
 
 //Update one man product
 router.patch('/:id',(request,response)=>{
-   /*products.update({id: request.params.id},{
-       $set:{
-           user:request.body.user,
-           product: request.body.product,
-           description: request.body.description,
-           price:request.body.price
-       }
-   })*/
-
    products.update(request.params.id,request.body.user, request.body.product, request.body.description, request.body.price)
         .then(()=>{
             response.send(products);

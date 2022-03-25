@@ -23,6 +23,6 @@ const mySchema = new Schema({
     price: Number
 });
 
-const modelSchemaMan = mongoose.model('ProductosMan', mySchema);
+const modelSchemaWoman = mongoose.model('ProductosWoman', mySchema);
 
-module.exports = modelSchemaMan;
+module.exports = modelSchemaWoman;

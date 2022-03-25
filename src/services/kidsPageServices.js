@@ -1,3 +1,4 @@
+const Model = require("../BBDD/modelKids");
 
 class kidsProduct{
     constructor() {
@@ -18,52 +19,44 @@ class kidsProduct{
             }
 
             resolve( this.kidsProducts.push(fullInfo));
+            const myProduct = new Model(fullInfo);
+            myProduct.save();
         });
     }
 
-    find(){
+    async find(){
+        this.kidsProducts = await Model.find();
         return this.kidsProducts;
     }
 
-    findOne(id){
-        let lista = this.kidsProductsProducts;
-        for (let i = 0; i < lista.length ; i++) {
-            if(lista[i].id.toString() === id){
-                return lista[i];
+    async findOne(id){
+        this.kidsProducts = await Model.find();
+
+        for (let i = 0; i < this.kidsProducts.length ; i++) {
+            if (this.kidsProducts[i].id === parseInt(id)) {
+                this.kidsProducts = this.kidsProducts[i];
+                return this.kidsProducts;
             }
         }
     }
 
-    update(id, changeUser, changeProduct, changeDescription, changePrice){
-        return new Promise(((resolve, reject) => {
-            let lista  = this.kidsProducts;
-            for (let i = 0; i < lista.length; i++) {
-                if(lista[i].id.toString() === id){
-                    const info ={
-                        id: lista[i].id,
-                        user: changeUser,
-                        product: changeProduct,
-                        description: changeDescription,
-                        price: changePrice
-                    }
-                    lista[i] = info;
-                    resolve('Changes has been done! '+info) ;
-                }
-            }
-        }))
+   async update(id, changeUser, changeProduct, changeDescription, changePrice){
+        let lista = await Model.find();
+        lista[id-1].user = changeUser;
+        lista[id-1].product = changeProduct;
+        lista[id-1].description = changeDescription;
+        lista[id-1].price = changePrice;
+
+        this.kidsProducts = lista;
+
+        const myProduct = new Model(this.kidsProducts[id-1]);
+        await myProduct.save()
+
+        return this.kidsProducts;
     }
 
-    delete(id){
-        return new Promise((resolve, reject) => {
-            let lista = this.kidsProducts;
-            for (let i = 0; i < lista.length ; i++) {
-                if(lista[i].id.toString() === id){
-                    this.kidsProducts.splice(lista[i].id);
-                    break;
-                }
-            }
-            resolve('Elimination perfectamente');
-        });
+    async delete(id){
+        await Model.deleteOne({id:id});
     }
 }
 module.exports = kidsProduct;

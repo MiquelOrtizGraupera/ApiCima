@@ -4,26 +4,31 @@ const WomanProducts = require("./womanPageServices");
 
 class AllProducts{
     constructor() {
-        const manProd = new ManProducts();
-        this.mProducts = manProd.find();
-
-        const kidProd = new KidProducts();
-        this.kProducts = kidProd.find();
-
-        const wProd = new WomanProducts();
-        this.wProducts = wProd.find();
+       this.allProducts = []
     }
 
-  findMan(){
-        return this.mProducts;
+    async find(){
+        await this.findMan();
+        await this.findWoman();
+        await this.findKids();
+    }
+
+  async findMan(){
+        const manProd = new ManProducts();
+        this.allProducts.push(await manProd.find())
+        return this.allProducts;
   }
 
-  findWoman(){
-        return this.wProducts;
+  async findWoman(){
+        const womProd = new WomanProducts();
+        this.allProducts.push(await womProd.find());
+        return this.allProducts
   }
 
-  findKids(){
-        return this.kProducts;
+  async findKids(){
+        const kProd = new KidProducts();
+        this.allProducts.push(await kProd.find());
+        return this.allProducts;
   }
 }
 
