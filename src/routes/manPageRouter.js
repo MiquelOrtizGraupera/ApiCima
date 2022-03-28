@@ -35,7 +35,7 @@ router.get('/:id',(request,response)=>{
 });
 
 //Create one man product
-router.post('/',upload.single("file"),(request,response)=>{
+/*router.post('/',upload.single("file"),(request,response)=>{
    console.log(request.file);
     products.create(request.body.user,request.body.product, request.body.description,request.body.price, request.file)
         .then(() =>{
@@ -44,7 +44,7 @@ router.post('/',upload.single("file"),(request,response)=>{
         .catch(() =>{
             response.json("Uop! algo salio mal");
         });
-});
+});*/
 
 //Update one man product
 router.patch('/:id',(request,response)=>{

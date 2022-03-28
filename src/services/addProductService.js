@@ -5,7 +5,7 @@ class addProductService{
         this.Products = [];
     }
 
-    create(user, product,gender, description, price, file){
+    create(user,gender, product, description, price, file){
         return new Promise((resolve, reject)=>{
             if(user === null || product === null || gender === null|| price === null){
                 return reject("Faltan datos, único no obligatorio és descripción");
@@ -33,3 +33,5 @@ class addProductService{
         });
     }
 }
+
+module.exports = addProductService;

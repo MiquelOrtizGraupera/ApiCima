@@ -5,7 +5,7 @@ class WomanProducts{
         this.womanProducts = [];
     }
 
-    create(user, product,gender, description, price){
+  /*  create(user, product,gender, description, price){
         return new Promise((resolve, reject)=>{
             if(user === null || product === null ||price === null){
                 return reject("Faltan datos, único no obligatorio és descripción");
@@ -24,7 +24,7 @@ class WomanProducts{
             const myProduct = new Model(fullInfo);
             myProduct.save();
         });
-    }
+    }*/
 
     async find(){
         this.womanProducts = await Model.find({gender:"woman"});
@@ -33,7 +33,7 @@ class WomanProducts{
     }
 
     async findOne(id){
-        this.womanProducts = await Model.find();
+        this.womanProducts = await Model.find({gender:"woman"});
 
         for (let i = 0; i < this.womanProducts.length ; i++) {
             if (this.womanProducts[i].id === parseInt(id)) {

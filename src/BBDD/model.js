@@ -28,6 +28,6 @@ const mySchema = new Schema({
     file : String
 });
 
-const modelSchemaMan = mongoose.model('ProductosMan', mySchema);
+const modelSchemaMan = mongoose.model('Productos', mySchema);
 
 module.exports = modelSchemaMan;

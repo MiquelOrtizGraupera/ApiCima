@@ -31,7 +31,7 @@ router.get('/:id',(request,response)=>{
 });
 
 //Create one woman product
-router.post('/',(request,response)=>{
+/*router.post('/',(request,response)=>{
     products.create(request.body.user,request.body.product, request.body.description,request.body.price)
         .then(() =>{
             response.json('Creado perfectamente');
@@ -39,7 +39,7 @@ router.post('/',(request,response)=>{
         .catch(() =>{
             response.json("Uop! algo salio mal");
         });
-});
+});*/
 
 //Update one woman product
 router.patch('/:id',(request,response)=>{

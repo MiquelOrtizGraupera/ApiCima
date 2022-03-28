@@ -1,8 +1,8 @@
 const express = require("express");
 const multer = require('multer');
-const addProducts = require('../services/addProductService');
+const Products = require('../services/addProductService');
 
-const products = new addProducts();
+const products = new Products();
 
 const router = express.Router();
 const upload = multer({
@@ -18,3 +18,5 @@ router.post('/', upload.single("file"),(request,response)=>{
             response.send("algo salio mal");
         })
 });
+
+module.exports = router;

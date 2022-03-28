@@ -5,7 +5,7 @@ class manProducts{
         this.manProducts = [];
     }
 
-    create(user, product,gender, description, price, file){
+    /*create(user, product,gender, description, price, file){
         return new Promise((resolve, reject)=>{
             if(user === null || product === null || price === null){
                 return reject("Faltan datos, único no obligatorio és descripción");
@@ -32,7 +32,7 @@ class manProducts{
             myProduct.save();
         });
     }
-
+*/
     async find(){
         this.manProducts = await Model.find({gender:"man"});
         return this.manProducts;
