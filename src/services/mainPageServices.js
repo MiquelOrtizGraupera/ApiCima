@@ -1,6 +1,5 @@
-const ManProducts = require("./manPageServices");
-const KidProducts = require("./kidsPageServices");
-const WomanProducts = require("./womanPageServices");
+const Model = require("../BBDD/model");
+
 
 class AllProducts{
     constructor() {
@@ -8,9 +7,7 @@ class AllProducts{
     }
 
     async find(){
-        await this.findMan();
-        await this.findWoman();
-        await this.findKids();
+     this.allProducts = await Model.find();
     }
 
   async findMan(){

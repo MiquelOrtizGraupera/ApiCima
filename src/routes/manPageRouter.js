@@ -1,10 +1,10 @@
 //Import mainPageServices to use it's logic
 const express = require("express");
 const multer = require('multer');
-const ManProducts = require("../services/manPageServices");
+const Products = require("../services/manPageServices");
 
 //Instance AllProducts class
-const products = new ManProducts();
+const products = new Products();
 
 //Route to module our API logic
 const router = express.Router();

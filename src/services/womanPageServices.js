@@ -1,11 +1,11 @@
-const Model = require("../BBDD/modelWoman");
+const Model = require("../BBDD/model");
 
 class WomanProducts{
     constructor() {
         this.womanProducts = [];
     }
 
-    create(user, product, description, price){
+    create(user, product,gender, description, price){
         return new Promise((resolve, reject)=>{
             if(user === null || product === null ||price === null){
                 return reject("Faltan datos, único no obligatorio és descripción");
@@ -14,6 +14,7 @@ class WomanProducts{
             const fullInfo = {
                 id : id,
                 user: user,
+                gender: gender,
                 product: product,
                 description: description,
                 price: price
@@ -26,7 +27,8 @@ class WomanProducts{
     }
 
     async find(){
-        this.womanProducts = await Model.find();
+        this.womanProducts = await Model.find({gender:"woman"});
+
         return this.womanProducts;
     }
 

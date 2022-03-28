@@ -15,6 +15,10 @@ const mySchema = new Schema({
         type:String,
         require: true
     },
+    gender:{
+        type:String,
+        require:true
+    },
     product: {
         type: String,
         require: true
