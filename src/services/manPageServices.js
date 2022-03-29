@@ -39,10 +39,10 @@ class manProducts{
     }
 
    async findOne(id){
-        this.manProducts = await Model.find();
+        this.manProducts = await Model.find({_id:id});
 
        for (let i = 0; i < this.manProducts.length ; i++) {
-           if (this.manProducts[i].id === parseInt(id)) {
+           if (this.manProducts[i].id === id) {
                this.manProducts = this.manProducts[i];
                return this.manProducts;
            }
@@ -51,15 +51,18 @@ class manProducts{
     }
 
     async update(id, changeUser, changeProduct, changeDescription, changePrice){
-        let lista = await Model.find();
-        lista[id-1].user = changeUser;
-        lista[id-1].product = changeProduct;
-        lista[id-1].description = changeDescription;
-        lista[id-1].price = changePrice;
+        let lista = await Model.find({_id:id});
+
+
+
+        lista[0].user = changeUser;
+        lista[0].product = changeProduct;
+        lista[0].description = changeDescription;
+        lista[0].price = changePrice;
 
         this.manProducts = lista;
 
-        const myProduct = new Model(this.Products[id-1]);
+        const myProduct = new Model(this.manProducts[0]);
         await myProduct.save()
 
         return this.manProducts;

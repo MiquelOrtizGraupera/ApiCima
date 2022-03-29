@@ -31,10 +31,10 @@ class kidsProduct{
     }
 
     async findOne(id){
-        this.kidsProducts = await Model.find({gender:"kid"});
+        this.kidsProducts = await Model.find({_id:id});
 
         for (let i = 0; i < this.kidsProducts.length ; i++) {
-            if (this.kidsProducts[i].id === parseInt(id)) {
+            if (this.kidsProducts[i].id === id) {
                 this.kidsProducts = this.kidsProducts[i];
                 return this.kidsProducts;
             }
@@ -42,15 +42,16 @@ class kidsProduct{
     }
 
    async update(id, changeUser, changeProduct, changeDescription, changePrice){
-        let lista = await Model.find();
-        lista[id-1].user = changeUser;
-        lista[id-1].product = changeProduct;
-        lista[id-1].description = changeDescription;
-        lista[id-1].price = changePrice;
+        let lista = await Model.find({_id:id});
+
+        lista[0].user = changeUser;
+        lista[0].product = changeProduct;
+        lista[0].description = changeDescription;
+        lista[0].price = changePrice;
 
         this.kidsProducts = lista;
 
-        const myProduct = new Model(this.kidsProducts[id-1]);
+        const myProduct = new Model(this.kidsProducts[0]);
         await myProduct.save()
 
         return this.kidsProducts;
