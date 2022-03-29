@@ -1,33 +1,29 @@
 const Model = require("../BBDD/model");
-const Port = require("../index");
 
 class addProductService{
     constructor(){
         this.Products = [];
     }
 
-    create(user,gender, product, description, price, file){
+    create(file, user,gender, product, description, price){
+        console.log("en la funcion")
         return new Promise((resolve, reject)=>{
             if(user === null || product === null || gender === null|| price === null){
                 return reject("Faltan datos, único no obligatorio és descripción");
             }
 
-            const port = new Port;
-            console.log("Este es mi puerto:" +port);
             let fileURL ="";
             if(file){
-                fileURL = "http://localhost:"+port+"/src/uploads/" +file.filename;
+                fileURL = "http://localhost:3000/src/uploads/" +file.originalname;
             }
 
-            const id = this.Products.length + 1
             const fullInfo = {
-                id: id,
+                file: fileURL,
                 user: user,
                 gender:gender,
                 product: product,
                 description: description,
-                price: price,
-                file: fileURL
+                price: price
             }
 
             resolve( this.Products.push(fullInfo));

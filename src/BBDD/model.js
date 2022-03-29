@@ -10,7 +10,7 @@ mongoose.connect('mongodb+srv://cima_admin:cima_admin@cima.etg2l.mongodb.net/CIM
 const Schema = mongoose.Schema;
 
 const mySchema = new Schema({
-    id : Number,
+    file : String,
     user: {
         type:String,
         require: true
@@ -25,7 +25,6 @@ const mySchema = new Schema({
     },
     description: String,
     price: Number,
-    file : String
 });
 
 const modelSchemaMan = mongoose.model('Productos', mySchema);

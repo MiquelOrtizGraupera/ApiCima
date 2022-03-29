@@ -69,7 +69,7 @@ class manProducts{
     }
 
    async delete(id){
-     await Model.deleteOne({id: id});
+     await Model.deleteOne({_id: id});
 
     }
 }

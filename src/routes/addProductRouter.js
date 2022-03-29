@@ -10,11 +10,12 @@ const upload = multer({
 });
 
 router.post('/', upload.single("file"),(request,response)=>{
-    products.create(request.body.user, request.body.gender, request.body.product,request.body.description,request.body.price)
+    products.create(request.file,request.body.user, request.body.gender, request.body.product,request.body.description,request.body.price)
         .then(()=>{
             response.send(products);
         })
         .catch(()=>{
+            console.log(request.file, request.body.user);
             response.send("algo salio mal");
         })
 });
