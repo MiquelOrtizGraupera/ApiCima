@@ -28,3 +28,5 @@ app.listen(port,()=>{
 });
 
 routerApi(app);
+
+module.exports = port;

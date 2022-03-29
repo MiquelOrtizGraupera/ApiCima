@@ -1,4 +1,5 @@
 const Model = require("../BBDD/model");
+const Port = require("../index");
 
 class addProductService{
     constructor(){
@@ -11,9 +12,11 @@ class addProductService{
                 return reject("Faltan datos, único no obligatorio és descripción");
             }
 
+            const port = new Port;
+            console.log("Este es mi puerto:" +port);
             let fileURL ="";
             if(file){
-                fileURL = "http://localhost:3000/src/uploads/" +file.filename;
+                fileURL = "http://localhost:"+port+"/src/uploads/" +file.filename;
             }
 
             const id = this.Products.length + 1
