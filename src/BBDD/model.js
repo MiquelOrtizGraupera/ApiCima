@@ -27,6 +27,6 @@ const mySchema = new Schema({
     price: Number,
 });
 
-const modelSchemaMan = mongoose.model('Productos', mySchema);
+const modelSchema = mongoose.model('Productos', mySchema);
 
-module.exports = modelSchemaMan;
+module.exports = modelSchema;
