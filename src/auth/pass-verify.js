@@ -6,7 +6,7 @@ class UserVerify{
     }
     async hashPassword(myPassword){
         const hash = await bcrypt.hash(myPassword, 10);
-        // console.log(hash);
+        console.log(hash);
         return hash;
     }
 

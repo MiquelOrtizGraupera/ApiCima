@@ -20,9 +20,8 @@ class usersLoginService{
             fullInfo.password = await pass.hashPassword(fullInfo.password);
 
             console.log(fullInfo.password)
-            console.log(fullInfo.password.toString())
 
-            this.userList.push(fullInfo);
+            // this.userList.push(fullInfo);
             const myUser = new Model(fullInfo);
             resolve(myUser.save());
         }))
@@ -30,14 +29,35 @@ class usersLoginService{
 
     async find(){
         this.userList = await Model.find();
+
         return this.userList;
     }
 
-    async findOne(id){}
+    async findOne(id){
+        this.userList = await Model.findOne({id:id})
+        return this.userList;
+    }
 
-    async update(id, changeName, changeEmail,changePassword){}
+    async update(id, changeName, changeEmail,changePassword){
+        const pass = new Verify();
 
-    async delete(id){}
+        const lista = await Model.find({id:id});
+        lista[0].username = changeName;
+        lista[0].email = changeEmail;
+        const hashPassw = await pass.hashPassword(changePassword);
+        console.log(hashPassw);
+        lista[0].password = hashPassw;
+        console.log(lista);
+        this.userList = lista;
+
+        const user = new Model(this.userList);
+        await user.save();
+        return this.userList;
+    }
+
+    async delete(id){
+        await Model.deleteOne({id:id});
+    }
 }
 
 module.exports = usersLoginService;

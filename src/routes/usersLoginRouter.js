@@ -15,7 +15,13 @@ router.get('/',(request ,response)=>{
 });
 
 router.get('/:id',(request, response)=>{
-
+    user.findOne(request.params.id)
+        .then(() =>{
+            response.send(user);
+        })
+        .catch(() =>{
+            response.send("Error!")
+        })
 });
 
 router.post('/',(request,response)=>{
@@ -26,6 +32,25 @@ router.post('/',(request,response)=>{
         })
         .catch(()=>{
             response.headers;
+        })
+})
+router.patch('/:id',(request, response)=>{
+    user.update(request.params.id, request.body.username,request.body.email,request.body.password)
+        .then(()=>{
+            response.send(user);
+        })
+        .catch(() =>{
+            response.send("Algo salio mal");
+        })
+});
+
+router.delete('/:id',(request,response)=>{
+    user.delete(request.params.id)
+        .then(()=>{
+            response.send("Borrado perfectamente");
+        })
+        .catch(()=>{
+            response.send("Error!");
         })
 })
 
