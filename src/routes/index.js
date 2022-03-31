@@ -6,6 +6,7 @@ const womanPage = require('./womanPageRouter');
 const kidsPage = require('./kidsPageRouter');
 const addProductPage = require('./addProductRouter');
 const addUser = require('./usersLoginRouter');
+const loginPage = require('./loginPageRouter');
 
 function routerApi(app){
     /*Nos permite separar cabeceras, URL, trabajar y separar peticiones*/
@@ -19,6 +20,7 @@ function routerApi(app){
     router.use('/kidsPage',kidsPage);
     router.use('/addProduct',addProductPage);
     router.use('/addUser',addUser);
+    router.use('/logIn',loginPage)
 }
 
 module.exports = routerApi;
