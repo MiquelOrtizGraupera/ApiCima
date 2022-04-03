@@ -1,19 +1,25 @@
 const express = require('express');
+const cors = require('cors');
 const bodyParser = require('body-parser');
 const routerApi = require('./routes');
 
 const port = process.env.PORT || 3000;
+const coroptions = {
+    origin: 'http://localhost:63342',
+    optionsSuccessStatus: 200
+}
 
 const app = express();
 app.use(bodyParser.json());
 app.use(express.json());
+app.use(cors(coroptions));
 
 /*SERVIR ESTÁTICOS! HTML CSS*/
 app.use('/app', express.static('src/public'));
 
 
 /*root PAGE*/
-app.get('/',(request, response)=>{
+app.get('/',cors(),(request, response)=>{
     console.log(request.headers);
     response.header({
         "custom-header":"Nuestro valor personalizado",
