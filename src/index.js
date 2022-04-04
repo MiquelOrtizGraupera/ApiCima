@@ -5,7 +5,7 @@ const routerApi = require('./routes');
 
 const port = process.env.PORT || 3000;
 const coroptions = {
-    origin:'http://localhost:63342',
+    origin:'http://localhost:3000',
     optionsSuccessStatus: 200
 }
 
