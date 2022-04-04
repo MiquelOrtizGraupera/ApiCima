@@ -14,7 +14,8 @@ class addProductService{
 
             let fileURL ="";
             if(file){
-                fileURL = "http://localhost:3000/src/uploads/" +file.originalname;
+                fileURL = "https://fierce-lake-30610.herokuapp.com/api/v1/manPage"+ file.originalname;
+                    // "http://localhost:3000/src/uploads/" +file.originalname;
             }
 
             const fullInfo = {
