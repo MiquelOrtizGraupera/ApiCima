@@ -5,7 +5,8 @@ const routerApi = require('./routes');
 
 const port = process.env.PORT || 3000;
 const coroptions = {
-    origin: 'http://localhost:63342',
+    origin: 'https://fierce-lake-30610.herokuapp.com',
+        // 'http://localhost:63342',
     optionsSuccessStatus: 200
 }
 
