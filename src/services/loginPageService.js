@@ -7,6 +7,8 @@ class LoginInit{
     }
 
     async findOne(username, password){
+        console.log(username)
+        console.log(password)
         const pass = new Verify();
         this.logInit = await Model.findOne({username:username})
         const isValid = await pass.verifyPassword(this.logInit.password,password);

@@ -14,9 +14,11 @@ class addProductService{
 
             let fileURL ="";
             if(file){
-                fileURL = "http://localhost:3000/src/uploads/" + file.originalname;
+                fileURL = " https://api.imgbb.com/1/upload" + file.originalname;
+                // "http://localhost:3000/src/uploads/" + file.originalname;
+                //    API KEY 027d1d77723a43090b29521d5ea14fa9
             }
-
+        /*imgBB*/
             const fullInfo = {
                 file: fileURL,
                 user: user,
