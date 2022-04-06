@@ -14,11 +14,12 @@ class addProductService{
 
             let fileURL ="";
             if(file){
-                fileURL = " https://api.imgbb.com/1/upload?key=" + "027d1d77723a43090b29521d5ea14fa9";
-                // "http://localhost:3000/src/uploads/" + file.originalname;
+                fileURL = "http://localhost:3000/src/uploads/" + file.filename;
+                //" https://api.imgbb.com/1/upload?key=" + "027d1d77723a43090b29521d5ea14fa9";
                 //    API KEY 027d1d77723a43090b29521d5ea14fa9
             }
-        /*imgBB*/
+            console.log(file)
+            console.log(fileURL)
             const fullInfo = {
                 file: fileURL,
                 user: user,
