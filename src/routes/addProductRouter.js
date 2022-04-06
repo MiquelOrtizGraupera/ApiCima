@@ -6,7 +6,7 @@ const products = new Products();
 
 const router = express.Router();
 const upload = multer({
-    dest:"src/uploads"
+    dest:"src/public/uploads"
 });
 
 router.post('/', upload.single("file"),(request,response)=>{

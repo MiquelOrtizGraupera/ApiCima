@@ -6,7 +6,6 @@ class addProductService{
     }
 
     create(file, user,gender, product, description, price){
-        console.log("en la funcion")
         return new Promise((resolve, reject)=>{
             if(user === null || product === null || gender === null|| price === null){
                 return reject("Faltan datos, único no obligatorio és descripción");
@@ -14,12 +13,11 @@ class addProductService{
 
             let fileURL ="";
             if(file){
-                fileURL = "http://localhost:3000/src/uploads/" + file.originalname;
+                fileURL = "http://localhost:3000/src/public/uploads/" + file.filename;
                 //" https://api.imgbb.com/1/upload?key=" + "027d1d77723a43090b29521d5ea14fa9";
                 //    API KEY 027d1d77723a43090b29521d5ea14fa9
             }
             console.log(file)
-            console.log(fileURL)
             const fullInfo = {
                 file: fileURL,
                 user: user,
