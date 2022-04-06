@@ -1,16 +1,14 @@
 //Import mainPageServices to use it's logic
 const express = require("express");
-const multer = require('multer');
 const Products = require("../services/manPageServices");
+const fs = require("fs");
+const path = require("path");
 
 //Instance AllProducts class
 const products = new Products();
 
 //Route to module our API logic
 const router = express.Router();
-const upload = multer({
-    dest:"src/uploads/"
-})
 
 //Get all man products
 router.get('/',(request,  response)=>{
