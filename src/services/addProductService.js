@@ -1,4 +1,5 @@
 const Model = require("../BBDD/model");
+const fs = require('fs')
 
 class addProductService{
     constructor(){
@@ -17,7 +18,14 @@ class addProductService{
                 //" https://api.imgbb.com/1/upload?key=" + "027d1d77723a43090b29521d5ea14fa9";
                 //    API KEY 027d1d77723a43090b29521d5ea14fa9
             }
-            console.log(file)
+            // console.log(file)
+            // let img = fs.readFileSync(request.file.path);
+            // let encode_image = img.toString('base64');
+            // let finalImg = {
+            //     contentType:request.file.mimetype,
+            //     image: new Buffer(encode_image,"base64")
+            // };
+
             const fullInfo = {
                 file: fileURL,
                 user: user,
@@ -29,7 +37,7 @@ class addProductService{
 
             resolve( this.Products.push(fullInfo));
             const myProduct = new Model(fullInfo);
-            myProduct.save();
+             myProduct.save();
         });
     }
 }

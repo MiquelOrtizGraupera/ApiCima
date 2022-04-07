@@ -8,11 +8,26 @@
     <title>AddProduct</title>
 </head>
 <body>
-    <div>
-       <form action="/" method="post" enctype="multipart/form-data">
-           <input id="file" type="file" name="file" class="file">
-       </form>
-    </div>
+<!--  SINGLE FILE -->
+<form action="/uploadfile" enctype="multipart/form-data" method="POST">
+    <input type="file" name="myFile" />
+    <input type="submit" value="Upload a file"/>
+</form>
+
+
+<!-- MULTIPLE FILES -->
+
+<form action="/uploadmultiple"  enctype="multipart/form-data" method="POST">
+    Select images: <input type="file" name="myFiles" multiple>
+    <input type="submit" value="Upload your files"/>
+</form>
+
+<!--   PHOTO-->
+
+<form action="/upload/photo" enctype="multipart/form-data" method="POST">
+    <input type="file" name="myImage" accept="image/*" />
+    <input type="submit" value="Upload Photo"/>
+</form>
 
 </body>
 </html>
