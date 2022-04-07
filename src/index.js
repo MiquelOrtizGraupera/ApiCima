@@ -12,10 +12,11 @@ const coroptions = {
 const app = express();
 app.use(bodyParser.json());
 app.use(express.json());
+app.use(express.static('uploads'));
 app.use(cors(coroptions));
 
 /*SERVIR ESTÁTICOS! HTML CSS*/
-app.use('/app', express.static('src/public'));
+app.use('/static', express.static('src/public'));
 
 
 /*root PAGE*/

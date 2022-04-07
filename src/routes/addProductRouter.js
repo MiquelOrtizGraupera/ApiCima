@@ -15,23 +15,25 @@ const router = express.Router();
 /* CHANGES SEEN IN A BLOG ABOUT MULTER */
 const storage = multer.diskStorage({
     destination:function(req,file,cb){
-        cb(null,'src/uploads')
+        cb(null,'src/public/uploads')
     },
     filename: function (req,file,cb){
-        cb(null,file.fieldname + '-'+ Date.now())
+        cb(null,Date.now() +".jpg")
     }
 });
 
 const upload = multer({storage:storage})
 
 router.get('/',function (req,res){
-    model.find().toArray((err,result) =>{
-        const imgArray = result.map(element => element._id);
-        console.log(imgArray);
 
-        if(err) return console.log(err)
-        res.send(imgArray);
-    })
+
+    // model.find().toArray((err,result) =>{
+    //     const imgArray = result.map(element => element._id);
+    //     console.log(imgArray);
+    //
+    //     if(err) return console.log(err)
+    //     res.send(imgArray);
+    // })
 });
 
 router.get('/:id',(req,res)=>{
@@ -46,9 +48,8 @@ router.get('/:id',(req,res)=>{
 
 
 router.post('/', upload.single("file"),(request,response)=>{
-    products.create(request.file,request.body.user, request.body.gender, request.body.product,request.body.description,request.body.price)
+        products.create(request.file,request.body.user, request.body.gender, request.body.product,request.body.description,request.body.price)
         .then(()=>{
-
             response.send(products);
         })
         .catch((err)=>{
