@@ -1,5 +1,5 @@
 //URL
-const API_URL = 'https://fierce-lake-30610.herokuapp.com/api/v1';
+const API_URL = 'https://localhost:3000/api/v1';
 
 //REQUEST CONST
 const requestLogin = new XMLHttpRequest();
@@ -13,7 +13,7 @@ const requestAddProduct = new XMLHttpRequest();
 
 //-----------GET manStuff-------------//
 
-/*function onManProductsRequestHandler(){
+function onManProductsRequestHandler(){
     console.log("Successful connection to API");
     const data = JSON.parse(this.response);
     console.log(data);

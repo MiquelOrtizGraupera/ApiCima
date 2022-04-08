@@ -16,7 +16,7 @@ app.use(express.static('uploads'));
 app.use(cors(coroptions));
 
 /*SERVIR ESTÁTICOS! HTML CSS*/
-app.use('/static', express.static('src/public'));
+app.use('/api/v1/static', express.static('src/public'));
 
 
 /*root PAGE*/
