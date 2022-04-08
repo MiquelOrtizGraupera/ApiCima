@@ -24,17 +24,6 @@ const storage = multer.diskStorage({
 
 const upload = multer({storage:storage})
 
-router.get('/',function (req,res){
-
-
-    // model.find().toArray((err,result) =>{
-    //     const imgArray = result.map(element => element._id);
-    //     console.log(imgArray);
-    //
-    //     if(err) return console.log(err)
-    //     res.send(imgArray);
-    // })
-});
 
 router.get('/:id',(req,res)=>{
     let filename = req.params.id;

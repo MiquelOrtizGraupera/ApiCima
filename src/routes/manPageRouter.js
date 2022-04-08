@@ -14,7 +14,7 @@ const router = express.Router();
 router.get('/',(request,  response)=>{
     products.find()
         .then(() =>{
-            response.send(products);
+            response.send("/static/public/html/manIndex.html");
         })
         .catch(() =>{
             console.log("WRONG CATCH REQUEST")
