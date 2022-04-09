@@ -11,23 +11,8 @@ const requestWomanPage = new XMLHttpRequest();
 const requestKidPage = new XMLHttpRequest();
 const requestAddProduct = new XMLHttpRequest();
 
-//-----------GET manStuff-------------//
+function putImgIntoDetail(){
+    const img = document.getElementById("detailImage");
 
-function onManProductsRequestHandler(){
-    console.log("Successful connection to API");
-    const data = JSON.parse(this.response);
-    console.log(data);
 }
 
-requestManPage.addEventListener('load',onManProductsRequestHandler);
-requestManPage.open('GET',API_URL+"/manPage");
-requestManPage.send();
-
-/*------------------------------------------*/
-const handlePictureClick = () =>{
-    console.log('picture');
-}
-
-const handleFileChange = (e)=>{
-    console.log(e.objectStoreNames);
-}

@@ -21,11 +21,6 @@ app.use('/api/v1/static', express.static('src/public'));
 
 /*root PAGE*/
 app.get('/',cors(),(request, response)=>{
-    console.log(request.headers);
-    response.header({
-        "custom-header":"Nuestro valor personalizado",
-    });
-    console.log(request.body);
     response.send('Esta seria la pag. Principal o LOGIN, apartir de aqui empieza la navegación');
 });
 
