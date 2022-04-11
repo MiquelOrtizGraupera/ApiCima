@@ -2,7 +2,7 @@ const express = require('express');
 const cors = require('cors');
 const bodyParser = require('body-parser');
 const routerApi = require('./routes');
-
+const serveStatic = require('serve-static');
 const port = process.env.PORT || 3000;
 const coroptions = {
     origin:'http://localhost:3000',
@@ -13,6 +13,7 @@ const app = express();
 app.use(bodyParser.json());
 app.use(express.json());
 app.use(express.static('uploads'));
+app.use(serveStatic)
 app.use(cors(coroptions));
 
 /*SERVIR ESTÁTICOS! HTML CSS*/

@@ -13,6 +13,7 @@ const requestAddProduct = new XMLHttpRequest();
 
 function putImgIntoDetail(){
     const img = document.getElementById("detailImage");
-
+    const imgFolder = document.images.namedItem("public/uploads/1649508428773.jpg");
+    img.innerText = imgFolder;
 }
 

@@ -3,6 +3,7 @@ const express = require('express');
 
 //Import mainPageServices to use it's logic
 const AllProducts = require('../services/mainPageServices');
+const {static} = require("express");
 
 //Instance AllProducts class
 const products = new AllProducts();
@@ -13,13 +14,14 @@ const router = express.Router();
 
 //Get all Products
 router.get('/',(request, response)=>{
-    products.find()
+    response.send(static("/public/html/index.html", {index: false}));
+   /* products.find()
         .then(() =>{
             response.send(products);
         })
         .catch(e =>{
             request.send(e);
-        })
+        })*/
 });
 
 
