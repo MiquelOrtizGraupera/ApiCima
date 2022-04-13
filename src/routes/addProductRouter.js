@@ -42,9 +42,8 @@ router.post('/', upload.single("file"),(request,response)=>{
             response.send(products);
         })
         .catch((err)=>{
-            console.log(request.file, request.body.user);
-            response.send("algo salio mal");
-            response.send(err)
+            console.error(err);
+            response.send(err + "algo salio mal");
         })
 });
 

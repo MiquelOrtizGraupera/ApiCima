@@ -7,7 +7,8 @@
 // const requestWomanPage = new XMLHttpRequest();
 // const requestKidPage = new XMLHttpRequest();
 // const requestAddProduct = new XMLHttpRequest();
-
+const jsdom = require("jsdom");
+const {JSDOM} = require("jsdom");
 
 let XMLHttpRequest = require('xmlhttprequest').XMLHttpRequest;
 //URL
@@ -33,7 +34,14 @@ function fetchData(url_api, callback){
 
 fetchData("https://cimaapi.herokuapp.com/api/v1/static/html/manPage", function (error, data){
     if(error) return console.log(error);
-    console.log(data[0]);
+    console.log(data.manProducts[0].product);
+
+    global.document = new JSDOM("manIndex.html").window.document;
+
+    let h1 = document.createElement("h1");
+    h1.append(data.manProducts[0].product);
+    console.log(h1.textContent);
+
 })
 
 
