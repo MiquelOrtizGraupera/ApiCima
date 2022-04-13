@@ -1,5 +1,4 @@
-//
-// //REQUEST CONST
+//REQUEST CONST
 // const requestLogin = new XMLHttpRequest();
 // const requestNewPassword = new XMLHttpRequest();
 // const requestMyAccount = new XMLHttpRequest();
@@ -8,18 +7,7 @@
 // const requestWomanPage = new XMLHttpRequest();
 // const requestKidPage = new XMLHttpRequest();
 // const requestAddProduct = new XMLHttpRequest();
-//
-// function onProductRequestHandler(){
-//     console.log("Connected to API");
-//     requestManPage.open('GET', API_URL+"manPage")
-//     requestManPage.send();
-//     const data = JSON.parse(this.response);
-//     console.log(data);
-// }
-//
-// // requestManPage.addEventListener('load', onProductRequestHandler);
-// requestManPage.open('GET', API_URL+"manPage");
-// // requestManPage.send();
+
 
 let XMLHttpRequest = require('xmlhttprequest').XMLHttpRequest;
 //URL
@@ -42,15 +30,24 @@ function fetchData(url_api, callback){
     xhttp.send();
 }
 
-fetchData(API_URL, function (error1, data1){
-    if(error1) return console.error(error1);
-    fetchData(API_URL + data1.results[0].id, function (error2, data2){
-        if(error2) return console.error(error2);
-        fetchData(data2.origin.url, function (error3, data3){
-            if(error3) return console.error(error3);
-            console.log(data1.info.count);
-            console.log(data2.name);
-            console.log(data3.dimension);
-        })
-    });
+
+fetchData("https://cimaapi.herokuapp.com/api/v1/static/html/manPage", function (error, data){
+    if(error) return console.log(error);
+    console.log(data[0]);
 })
+
+
+
+
+// fetchData(API_URL, function (error1, data1){
+//     if(error1) return console.error(error1);
+//     fetchData(API_URL + data1.results[0].id, function (error2, data2){
+//         if(error2) return console.error(error2);
+//         fetchData(data2.origin.url, function (error3, data3){
+//             if(error3) return console.error(error3);
+//             console.log(data1.info.count);
+//             console.log(data2.name);
+//             console.log(data3.dimension);
+//         })
+//     });
+// })
