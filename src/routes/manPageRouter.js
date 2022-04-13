@@ -15,6 +15,7 @@ router.get('/',(request,  response)=>{
     products.find()
         .then(() =>{
             response.send(products);
+            console.log("HOlaaaa");
         })
         .catch(() =>{
             console.log("WRONG CATCH REQUEST")

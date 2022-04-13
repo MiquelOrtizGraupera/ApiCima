@@ -13,7 +13,6 @@ const app = express();
 app.use(bodyParser.json());
 app.use(express.json());
 app.use(express.static('uploads'));
-app.use(serveStatic)
 app.use(cors(coroptions));
 
 /*SERVIR ESTÁTICOS! HTML CSS*/

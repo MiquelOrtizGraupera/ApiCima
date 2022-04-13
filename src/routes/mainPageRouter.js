@@ -4,6 +4,7 @@ const express = require('express');
 //Import mainPageServices to use it's logic
 const AllProducts = require('../services/mainPageServices');
 const {static} = require("express");
+const serveStatic = require("serve-static");
 
 //Instance AllProducts class
 const products = new AllProducts();
@@ -14,7 +15,7 @@ const router = express.Router();
 
 //Get all Products
 router.get('/',(request, response)=>{
-    response.send(static("/public/html/index.html", {index: false}));
+    response.send(static("/public/html/index.html"));
    /* products.find()
         .then(() =>{
             response.send(products);

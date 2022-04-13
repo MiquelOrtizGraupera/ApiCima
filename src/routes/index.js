@@ -12,7 +12,7 @@ function routerApi(app){
     /*Nos permite separar cabeceras, URL, trabajar y separar peticiones*/
     const router = express.Router();
 
-    app.use('/api/v1',router);
+    app.use('/api/v1/static/html',router);
 
     router.use('/mainPage',mainPage);
     router.use('/manPage',manPage);
