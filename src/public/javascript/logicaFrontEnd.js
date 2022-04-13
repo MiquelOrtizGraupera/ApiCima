@@ -38,9 +38,9 @@ fetchData("https://cimaapi.herokuapp.com/api/v1/static/html/manPage", function (
 
     global.document = new JSDOM("manIndex.html").window.document;
 
-    let h1 = document.createElement("h1");
-    h1.append(data.manProducts[0].product);
-    console.log(h1.textContent);
+    let h4 = document.getElementById("productName");
+    h4.append(data.manProducts[0].product);
+    console.log(h4.textContent);
 
 })
 
