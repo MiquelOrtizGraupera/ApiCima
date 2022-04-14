@@ -1,6 +1,8 @@
 //Import mainPageServices to use it's logic
 const express = require("express");
 const Products = require("../services/manPageServices");
+const path = require("path");
+const fs = require('fs');
 
 //Instance AllProducts class
 const products = new Products();
@@ -30,17 +32,7 @@ router.get('/:id',(request,response)=>{
         })
 });
 
-//Create one man product
-/*router.post('/',upload.single("file"),(request,response)=>{
-   console.log(request.file);
-    products.create(request.body.user,request.body.product, request.body.description,request.body.price, request.file)
-        .then(() =>{
-            response.json('Creado perfectamente');
-        })
-        .catch(() =>{
-            response.json("Uop! algo salio mal");
-        });
-});*/
+
 
 //Update one man product
 router.patch('/:id',(request,response)=>{
