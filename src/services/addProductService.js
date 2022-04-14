@@ -1,4 +1,5 @@
 const Model = require("../BBDD/model");
+const {response} = require("express");
 
 
 class addProductService{
@@ -37,8 +38,12 @@ class addProductService{
             }
 
             resolve( this.Products.push(fullInfo));
-            const myProduct = new Model(fullInfo);
-             myProduct.save();
+            let myProduct = new Model(fullInfo);
+            myProduct.save((err, productStored) =>{
+                if(err) return response.status(500).send({message:'Error al guardar...'});
+                if(!productStored) return response.status(404).send({message:'No se pudo guardar el doc...'});
+                return response.status(200).send({product:productStored});
+            })
         });
     }
 }
