@@ -24,18 +24,6 @@ const storage = multer.diskStorage({
 
 const upload = multer({storage:storage})
 
-
-router.get('/:id',(req,res)=>{
-    let filename = req.params.id;
-
-    model.findOne({'_id': ObjectId(filename)},(err,result)=>{
-        if(err) return console.log(err);
-        res.contentType('image/jpeg');
-        res.send(result.image.buffer)
-    })
-})
-
-
 router.post('/', upload.single("file"),(request,response)=>{
         products.create(request.file,request.body.user, request.body.gender, request.body.product,request.body.description,request.body.price)
         .then(()=>{
