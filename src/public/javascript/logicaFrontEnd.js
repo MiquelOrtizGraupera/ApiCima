@@ -34,12 +34,13 @@ function fetchData(url_api, callback){
 
 fetchData("https://cimaapi.herokuapp.com/api/v1/static/html/manPage", function (error, data){
     if(error) return console.log(error);
-    console.log(data.manProducts[0].product);
 
     global.document = new JSDOM("manIndex.html").window.document;
 
-    let h4 = document.getElementById("productName");
-    h4.append(data.manProducts[0].product);
+    let info = data.manProducts[0].product;
+    console.log(info);
+
+    let h4 = document.getElementById("productName")
     console.log(h4.textContent);
 
 })
