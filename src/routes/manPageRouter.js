@@ -1,8 +1,6 @@
 //Import mainPageServices to use it's logic
 const express = require("express");
 const Products = require("../services/manPageServices");
-const fs = require("fs");
-const path = require("path");
 
 //Instance AllProducts class
 const products = new Products();

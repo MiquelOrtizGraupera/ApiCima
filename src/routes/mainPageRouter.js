@@ -15,14 +15,13 @@ const router = express.Router();
 
 //Get all Products
 router.get('/',(request, response)=>{
-    response.send(static("/public/html/index.html"));
-   /* products.find()
+    products.find()
         .then(() =>{
             response.send(products);
         })
         .catch(e =>{
             request.send(e);
-        })*/
+        })
 });
 
 
