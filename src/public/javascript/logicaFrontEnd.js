@@ -45,18 +45,19 @@ function onloadBodyMan(){
     fetchData("http://localhost:3000/api/v1/static/manPage", function (error, data){
         if(error) return console.log(error);
         else{
-            console.log(data)
-            console.log(data.manProducts[0].product)
+            console.log(data.manProducts[4].product)
             let img = document.getElementById("productImage");
-            console.log(data.manProducts[0].file.toString());
+            // console.log(data.manProducts[4].file);
             let h4 = document.getElementById("productName");
             let p1 = document.getElementById("descriptionProduct");
             let p2 = document.getElementById("priceProduct");
-            let infoImage = document.createTextNode(data.manProducts[0].file.toString());
-            let infoName = document.createTextNode(data.manProducts[0].product.toString());
-            let infoDescription = document.createTextNode(data.manProducts[0].description.toString());
-            let infoPrice = document.createTextNode(data.manProducts[0].price.toString());
-            img.setAttribute("src","src/public/uploads/"+infoImage);
+            let infoImage = data.manProducts[4].file;
+            // let infoImage = document.createTextNode(data.manProducts[4].file);
+            let infoName = document.createTextNode(data.manProducts[4].product.toString());
+            let infoDescription = document.createTextNode(data.manProducts[4].description.toString());
+            let infoPrice = document.createTextNode(data.manProducts[4].price.toString());
+            // console.log(infoImage);
+            img.setAttribute("src","/public/uploads/"+infoImage);
             h4.append(infoName);
             p1.append(infoDescription);
             p2.append(infoPrice);
