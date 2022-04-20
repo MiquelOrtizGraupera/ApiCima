@@ -39,9 +39,17 @@ function onloadBody(){
         if(error) return console.log(error);
         else{
             console.log(data)
+            console.log(data.manProducts[0].product)
+            let h4 = document.getElementById("productName");
+            h4.innerHTML(data.manProducts[0].product.toString());
         }
     })
 }
+
+
+
+
+
 // fetchData("http://localhost:3000/api/v1/static/manPage", function (error, data){
 //     if(error) return console.log(error);
 //
