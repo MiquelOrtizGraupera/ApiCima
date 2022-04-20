@@ -41,7 +41,8 @@ function onloadBody(){
             console.log(data)
             console.log(data.manProducts[0].product)
             let h4 = document.getElementById("productName");
-            h4.innerHTML(data.manProducts[0].product.toString());
+            let info = document.createTextNode(data.manProducts[0].product.toString());
+            h4.append(info);
         }
     })
 }
