@@ -32,35 +32,24 @@ function fetchData(url_api, callback){
 }
 
 function onloadBodyMan(){
-    alert("Funcion cargada en el DOM");
-   // fetchData("http://localhost:3000/api/v1/static/get-image", function (error, data){
-   //     if(error) return console.log(error);
-   //     else{
-   //         console.log(data)
-   //         let img = document.getElementById("productImage");
-   //
-   //         img.setAttribute("src=","src/public/uploads/"+)
-   //     }
-   // })
     fetchData("http://localhost:3000/api/v1/static/manPage", function (error, data){
+        console.log(data.length);
         if(error) return console.log(error);
         else{
-            console.log(data.manProducts[4].product)
-            let img = document.getElementById("productImage");
-            // console.log(data.manProducts[4].file);
-            let h4 = document.getElementById("productName");
-            let p1 = document.getElementById("descriptionProduct");
-            let p2 = document.getElementById("priceProduct");
-            let infoImage = data.manProducts[4].file;
-            // let infoImage = document.createTextNode(data.manProducts[4].file);
-            let infoName = document.createTextNode(data.manProducts[4].product.toString());
-            let infoDescription = document.createTextNode(data.manProducts[4].description.toString());
-            let infoPrice = document.createTextNode(data.manProducts[4].price.toString());
-            // console.log(infoImage);
-            img.setAttribute("src","/public/uploads/"+infoImage);
-            h4.append(infoName);
-            p1.append(infoDescription);
-            p2.append(infoPrice);
+            for (let i = 0; i < data.size ; i++) {
+                let img = document.getElementById("productImage"+i);
+                let h4 = document.getElementById("productName"+i);
+                let p1 = document.getElementById("descriptionProduct"+i);
+                let p2 = document.getElementById("priceProduct"+i);
+                let infoImage = data.manProducts[i].file;
+                let infoName = document.createTextNode(data.manProducts[i].product.toString());
+                let infoDescription = document.createTextNode(data.manProducts[i].description.toString());
+                let infoPrice = document.createTextNode(data.manProducts[i].price.toString());
+                img.setAttribute("src","/public/uploads/"+infoImage);
+                h4.append(infoName);
+                p1.append(infoDescription);
+                p2.append(infoPrice);
+            }
         }
     })
 }
