@@ -31,18 +31,35 @@ function fetchData(url_api, callback){
     requestManPage.send();
 }
 
-function onloadBody(){
+function onloadBodyMan(){
     alert("Funcion cargada en el DOM");
-    let h4 = document.getElementById("productName");
-    console.log(h4.textContent);
+   // fetchData("http://localhost:3000/api/v1/static/get-image", function (error, data){
+   //     if(error) return console.log(error);
+   //     else{
+   //         console.log(data)
+   //         let img = document.getElementById("productImage");
+   //
+   //         img.setAttribute("src=","src/public/uploads/"+)
+   //     }
+   // })
     fetchData("http://localhost:3000/api/v1/static/manPage", function (error, data){
         if(error) return console.log(error);
         else{
             console.log(data)
             console.log(data.manProducts[0].product)
+            let img = document.getElementById("productImage");
+            console.log(data.manProducts[0].file.toString());
             let h4 = document.getElementById("productName");
-            let info = document.createTextNode(data.manProducts[0].product.toString());
-            h4.append(info);
+            let p1 = document.getElementById("descriptionProduct");
+            let p2 = document.getElementById("priceProduct");
+            let infoImage = document.createTextNode(data.manProducts[0].file.toString());
+            let infoName = document.createTextNode(data.manProducts[0].product.toString());
+            let infoDescription = document.createTextNode(data.manProducts[0].description.toString());
+            let infoPrice = document.createTextNode(data.manProducts[0].price.toString());
+            img.setAttribute("src","src/public/uploads/"+infoImage);
+            h4.append(infoName);
+            p1.append(infoDescription);
+            p2.append(infoPrice);
         }
     })
 }
