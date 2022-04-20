@@ -31,19 +31,24 @@ function fetchData(url_api, callback){
     xhttp.send();
 }
 
+function onloadBody(){
+    fetchData("https://cimaapi.herokuapp.com/api/v1/static/html/manPage", function (error, data){
+        if(error) return console.log(error);
 
-fetchData("https://cimaapi.herokuapp.com/api/v1/static/html/manPage", function (error, data){
-    if(error) return console.log(error);
+        global.document = new JSDOM("manIndex.html").window.document;
+        let info = data.manProducts[0].product;
+        console.log(info);
 
-    global.document = new JSDOM("manIndex.html").window.document;
-    let info = data.manProducts[0].product;
-    console.log(info);
+        $(document).ready(function (){
+            document.open();
+            let h4 = document.getElementById("productName");
+            document.write("<h1>Informatione</h1>")
+            console.log(h4.textContent);
+        });
+    })
+}
 
-    $(document).ready(function (){
-        let h4 = document.getElementById("productName");
-        console.log(h4.textContent);
-    });
-})
+
 
 
 
