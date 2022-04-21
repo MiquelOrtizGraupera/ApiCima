@@ -12,7 +12,7 @@
     <link rel="stylesheet" type="text/css" href="../styles/styles.css"/>
     <title>CIMA Clothes</title>
 </head>
-<body>
+<body onload="onloadIndex()">
 <nav class="navNormal">
 <img id="logoLeft" src="../resources/LogoNoMargin.png" alt="LogoLeft" width="80px" height="68px">
 <img id="logoRight" src="../resources/LogoNoMargin.png" alt="LogoRight" width="80px" height="68px">
@@ -27,46 +27,46 @@
 </nav>
 <main>
     <section class="container">
-        <h2 onclick="onProductRequestHandler()">Ropa Hombre</h2>
+        <h2>Ropa Hombre</h2>
         <div class="cards-containerMan">
             <div class="item">
                 <a href="detail.html">
-                <img src="../resources/chaqueta.png" alt="imagen">
-                <h4>Chaqueta</h4>
-                <p>La ostia</p>
-                <p>123</p>
+                <img id="productImage0">
+                <h4 id="productName0"></h4>
+                <p id="descriptionProduct0"></p>
+                <p id="priceProduct0"></p>
                 </a>
             </div>
             <div class="item">
                 <a href="detail.html">
-                <img src="../resources/chaqueta.png" alt="imagen">
-                <h4>Chaqueton de pánico</h4>
-                <p>Para la nieve mas dura chaqueton de pánico</p>
-                <p>120€</p>
+                <img id="productImage1">
+                <h4 id="productName1"></h4>
+                <p id="descriptionProduct1"></p>
+                <p id="priceProduct1"></p>
                 </a>
              </div>
             <div class="item">
                 <a href="detail.html">
-                <img src="../resources/chaqueta.png" alt="imagen">
-                <h4>Chaqueton de pánico</h4>
-                <p>Para la nieve mas dura chaqueton de pánico</p>
-                <p>120€</p>
+                <img id="productImage2">
+                <h4 id="productName2"></h4>
+                <p id="descriptionProduct2"></p>
+                <p id="priceProduct2"></p>
                 </a>
             </div>
             <div class="item">
                 <a href="detail.html">
-                <img src="../resources/chaqueta.png" alt="imagen">
-                <h4>Chaqueton de pánico</h4>
-                <p>Para la nieve mas dura chaqueton de pánico</p>
-                <p>120€</p>
+                <img id="productImage3">
+                <h4 id="productName3"></h4>
+                <p id="descriptionProduct3"></p>
+                <p id="priceProduct3"></p>
                 </a>
             </div>
             <div class="item">
                 <a href="detail.html">
-                <img src="../resources/chaqueta.png" alt="imagen">
-                <h4>Chaqueton de pánico</h4>
-                <p>Para la nieve mas dura chaqueton de pánico</p>
-                <p>120€</p>
+                <img id="productImage4">
+                <h4 id="productName4"></h4>
+                <p id="descriptionProduct4"></p>
+                <p id="priceProduct4"></p>
                 </a>
             </div>
         </div>
@@ -74,42 +74,42 @@
         <div class="cards-containerWomen">
             <div class="item">
                 <a href="detail.html">
-                <img src="../resources/tacones.jpg" alt="imagen">
-                <h4>Tacón elegante</h4>
-                <p>Para la nieve mas dura chaqueton de pánico</p>
-                <p>80€</p>
+                <img id="wimgProduct0">
+                <h4 id="wnameProduct0"><h4>
+                <p id="wdescriptionProduct0"></p>
+                <p id></p>
                 </a>
             </div>
             <div class="item">
                 <a href="detail.html">
-                <img src="../resources/tacones.jpg" alt="imagen">
-                <h4>Tacón elegante</h4>
-                <p>Para la nieve mas dura chaqueton de pánico</p>
-                <p>80€</p>
+                <img id="wimgProduct1">
+                <h4 id="wnameProduct1"></h4>
+                <p id="wdescriptionProduct1"></p>
+                <p></p>
                 </a>
             </div>
             <div class="item">
                 <a href="detail.html">
-                <img src="../resources/tacones.jpg" alt="imagen">
-                <h4>Tacón elegante</h4>
-                <p>Para la nieve mas dura chaqueton de pánico</p>
-                <p>80€</p>
+                <img id="wimgProduct2">
+                <h4 id="wnameProduct2"></h4>
+                <p id="wdescriptionProduct2"></p>
+                <p></p>
                 </a>
             </div>
             <div class="item">
                 <a href="detail.html">
-                <img src="../resources/tacones.jpg" alt="imagen">
-                <h4>Tacón elegante</h4>
-                <p>Para la nieve mas dura chaqueton de pánico</p>
-                <p>80€</p>
+                <img id="wimgProduct3">
+                <h4 id="wnameProduct3"></h4>
+                <p id="wdescriptionProduct3"></p>
+                <p></p>
                 </a>
             </div>
             <div class="item">
                 <a href="detail.html">
-                <img src="../resources/tacones.jpg" alt="imagen">
-                <h4>Tacón elegante</h4>
-                <p>Para la nieve mas dura chaqueton de pánico</p>
-                <p>80€</p>
+                <img id="wimgProduct4">
+                <h4 id="wnameProduct4"></h4>
+                <p id="wdescriptionProduct4"></p>
+                <p></p>
                 </a>
             </div>
         </div>
@@ -117,7 +117,7 @@
         <div class="cards-containerKid">
             <div class="item">
                 <a href="detail.html">
-                <img src="../resources/tommyBoy.jpg" alt="imagen">
+                <img id="">
                 <h4>Jersei Hilfiger</h4>
                 <p>Para la nieve mas dura chaqueton de pánico</p>
                 <p>120€</p>
@@ -159,28 +159,6 @@
 
     </section>
 </main>
-<!--<script type="module">
-    // Import the functions you need from the SDKs you need
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.7/firebase-app.js";
-    import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.6.7/firebase-analytics.js";
-    // TODO: Add SDKs for Firebase products that you want to use
-    // https://firebase.google.com/docs/web/setup#available-libraries
-
-    // Your web app's Firebase configuration
-    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-    const firebaseConfig = {
-        apiKey: "AIzaSyAhHp83niMOdE4r_YbJw3qH4WOuUbgnDrM",
-        authDomain: "cima-761e7.firebaseapp.com",
-        projectId: "cima-761e7",
-        storageBucket: "cima-761e7.appspot.com",
-        messagingSenderId: "6018050243",
-        appId: "1:6018050243:web:1e9cf35cea9ac2a3ceda76",
-        measurementId: "G-J5TYMP842J"
-    };
-
-    // Initialize Firebase
-    const app = initializeApp(firebaseConfig);
-    const analytics = getAnalytics(app);
-</script>-->
+<script src="../javascript/logicaFrontEnd.js"></script>
 </body>
 </html>

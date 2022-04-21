@@ -47,10 +47,10 @@ function onloadBodyWoman(){
         else{
             for (let i = 0; i < data.womanProducts.length ; i++) {
 
-                let img = document.getElementById("imgProduct"+i);
-                let h4 = document.getElementById("nameProduct"+i);
-                let p1 = document.getElementById("descriptionProduct"+i);
-                let p2 = document.getElementById("priceProduct"+i);
+                let img = document.getElementById("wimgProduct"+i);
+                let h4 = document.getElementById("wnameProduct"+i);
+                let p1 = document.getElementById("wdescriptionProduct"+i);
+                let p2 = document.getElementById("wpriceProduct"+i);
 
                 let infoImg = data.womanProducts[i].file;
                 let infoName = data.womanProducts[i].product;
@@ -72,10 +72,10 @@ function onloadBodyKid(){
         else{
             for (let i = 0; i < data.kidsProducts.length; i++) {
 
-                let img = document.getElementById("imgProduct"+i);
-                let h4 = document.getElementById("nameProduct"+i);
-                let p1 = document.getElementById("descriptionProduct"+i);
-                let p2 = document.getElementById("priceProduct"+i);
+                let img = document.getElementById("kimgProduct"+i);
+                let h4 = document.getElementById("knameProduct"+i);
+                let p1 = document.getElementById("kdescriptionProduct"+i);
+                let p2 = document.getElementById("kpriceProduct"+i);
 
                 let infoImg = data.kidsProducts[i].file;
                 let infoName = data.kidsProducts[i].product;
@@ -89,6 +89,12 @@ function onloadBodyKid(){
             }
         }
     })
+}
+
+function onloadIndex(){
+    onloadBodyMan();
+    onloadBodyWoman();
+    onloadBodyKid();
 }
 
 
