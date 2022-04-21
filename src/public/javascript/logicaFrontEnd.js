@@ -33,10 +33,10 @@ function fetchData(url_api, callback){
 
 function onloadBodyMan(){
     fetchData("http://localhost:3000/api/v1/static/manPage", function (error, data){
-        console.log(data.length);
+        console.log(data.manProducts.length);
         if(error) return console.log(error);
         else{
-            for (let i = 0; i < data.size ; i++) {
+            for (let i = 0; i < data.manProducts.length ; i++) {
                 let img = document.getElementById("productImage"+i);
                 let h4 = document.getElementById("productName"+i);
                 let p1 = document.getElementById("descriptionProduct"+i);
@@ -45,7 +45,7 @@ function onloadBodyMan(){
                 let infoName = document.createTextNode(data.manProducts[i].product.toString());
                 let infoDescription = document.createTextNode(data.manProducts[i].description.toString());
                 let infoPrice = document.createTextNode(data.manProducts[i].price.toString());
-                img.setAttribute("src","/public/uploads/"+infoImage);
+                img.setAttribute("src","/api/v1/static/uploads/"+infoImage);
                 h4.append(infoName);
                 p1.append(infoDescription);
                 p2.append(infoPrice);
