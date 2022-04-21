@@ -1,6 +1,23 @@
 //REQUEST CONST
 const requestPage = new XMLHttpRequest();
 
+function logInUser(url_api, callback){
+    requestPage.open('POST',url_api, true);
+    requestPage.onreadystatechange = function (event){
+        if(requestPage.readyState === 4){
+            if(requestPage.status === 200){
+                callback(null, JSON.parse(requestPage.responseText))
+            }else{
+                const error = new Error("Error "+ url_api);
+                return callback(error, null)
+            }
+        }
+    }
+    requestPage.send();
+}
+
+
+
 function fetchData(url_api, callback){
      // const xhttp = new XMLHttpRequest();
       requestPage.open('GET', url_api, true);
@@ -91,9 +108,7 @@ function onloadBodyKid(){
     })
 }
 
-function onloadIndex(){
 
-}
 
 
 
