@@ -1,34 +1,20 @@
 //REQUEST CONST
-// const requestLogin = new XMLHttpRequest();
-// const requestNewPassword = new XMLHttpRequest();
-// const requestMyAccount = new XMLHttpRequest();
-// const requestMainPage = new XMLHttpRequest();
-const requestManPage = new XMLHttpRequest();
-// const requestWomanPage = new XMLHttpRequest();
-// const requestKidPage = new XMLHttpRequest();
-// const requestAddProduct = new XMLHttpRequest();
-// const jsdom = require("jsdom");
-// const {JSDOM} = require("jsdom");
-
-// let XMLHttpRequest = require('xmlhttprequest').XMLHttpRequest;
-//URL
-const API_URL = 'https://rickandmortyapi.com/api/character/';
-//    'http://localhost:3000/api/v1/manPage';
+const requestPage = new XMLHttpRequest();
 
 function fetchData(url_api, callback){
      // const xhttp = new XMLHttpRequest();
-      requestManPage.open('GET', url_api, true);
-        requestManPage.onreadystatechange = function (event){
-        if(requestManPage.readyState === 4){
-            if(requestManPage.status === 200){
-                callback(null, JSON.parse(requestManPage.responseText))
+      requestPage.open('GET', url_api, true);
+        requestPage.onreadystatechange = function (event){
+        if(requestPage.readyState === 4){
+            if(requestPage.status === 200){
+                callback(null, JSON.parse(requestPage.responseText))
             }else{
                 const error = new Error("Error "+ url_api);
                 return callback(error, null)
             }
         }
     }
-    requestManPage.send();
+    requestPage.send();
 }
 
 function onloadBodyMan(){
@@ -86,7 +72,20 @@ function onloadBodyKid(){
         else{
             for (let i = 0; i < data.kidsProducts.length; i++) {
 
+                let img = document.getElementById("imgProduct"+i);
+                let h4 = document.getElementById("nameProduct"+i);
+                let p1 = document.getElementById("descriptionProduct"+i);
+                let p2 = document.getElementById("priceProduct"+i);
 
+                let infoImg = data.kidsProducts[i].file;
+                let infoName = data.kidsProducts[i].product;
+                let infoDescription = data.kidsProducts[i].description;
+                let infoPrice = data.kidsProducts[i].price;
+
+                img.setAttribute("src","/api/v1/static/uploads/"+infoImg);
+                h4.append(infoName);
+                p1.append(infoDescription);
+                p2.append(infoPrice);
             }
         }
     })
