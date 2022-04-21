@@ -54,6 +54,44 @@ function onloadBodyMan(){
     })
 }
 
+function onloadBodyWoman(){
+    fetchData("http://localhost:3000/api/v1/static/womanPage", function (error, data){
+        console.log(data);
+        if(error) return console.log(error);
+        else{
+            for (let i = 0; i < data.womanProducts.length ; i++) {
+
+                let img = document.getElementById("imgProduct"+i);
+                let h4 = document.getElementById("nameProduct"+i);
+                let p1 = document.getElementById("descriptionProduct"+i);
+                let p2 = document.getElementById("priceProduct"+i);
+
+                let infoImg = data.womanProducts[i].file;
+                let infoName = data.womanProducts[i].product;
+                let infoDescription = data.womanProducts[i].description;
+                let infoPrice = data.womanProducts[i].price;
+
+                img.setAttribute("src","/api/v1/static/uploads/"+infoImg);
+                h4.append(infoName);
+                p1.append(infoDescription);
+                p2.append(infoPrice);
+            }
+        }
+    })
+}
+
+function onloadBodyKid(){
+    fetchData("http://localhost:3000/api/v1/static/kidsPage", function (error, data){
+        if(error) return console.log(error);
+        else{
+            for (let i = 0; i < data.kidsProducts.length; i++) {
+
+
+            }
+        }
+    })
+}
+
 
 
 
