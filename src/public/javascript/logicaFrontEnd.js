@@ -92,9 +92,7 @@ function onloadBodyKid(){
 }
 
 function onloadIndex(){
-    onloadBodyMan();
-    onloadBodyWoman();
-    onloadBodyKid();
+
 }
 
 
