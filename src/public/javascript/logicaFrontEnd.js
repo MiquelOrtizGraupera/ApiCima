@@ -1,19 +1,41 @@
+const findOne = require("../../services/loginPageService")
+const log = new findOne();
 //REQUEST CONST
 const requestPage = new XMLHttpRequest();
+const requestLogIn = new XMLHttpRequest();
 
-function logInUser(url_api, callback){
-    requestPage.open('POST',url_api, true);
-    requestPage.onreadystatechange = function (event){
-        if(requestPage.readyState === 4){
-            if(requestPage.status === 200){
-                callback(null, JSON.parse(requestPage.responseText))
+function FetchDataLogInUser(url_api, callback){
+    requestLogIn.open('GET',url_api, true);
+    requestLogIn.onreadystatechange = function (event){
+        if(requestLogIn.readyState === 4){
+            if(requestLogIn.status === 200){
+                callback(null, JSON.parse(requestLogIn.responseText))
             }else{
                 const error = new Error("Error "+ url_api);
                 return callback(error, null)
             }
         }
     }
-    requestPage.send();
+    requestLogIn.send();
+}
+
+
+function LogIn(){
+    FetchDataLogInUser("http://localhost:3000/api/v1/logIn", function (error, data){
+        if(error) console.log(error);
+        else{
+            let user = document.getElementById("nombreUsuario");
+            let password = document.getElementById("passwordUsuario");
+
+            let userDef = user.textContent;
+            let passDef = password.textContent;
+            console.log(userDef);
+            console.log(passDef);
+            log.findOne(userDef, passDef)
+                .then(r => console.log(r))
+                .catch(e => console.log(e));
+        }
+    })
 }
 
 

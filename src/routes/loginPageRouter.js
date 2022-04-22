@@ -5,6 +5,7 @@ const Login = require("../services/loginPageService");
 const log = new Login();
 
 router.get('/',(request,response)=>{
+
     log.findOne(request.body.username,request.body.password)
         .then((isValid)=>{
            if(isValid){
