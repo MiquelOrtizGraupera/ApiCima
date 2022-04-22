@@ -25,13 +25,14 @@ router.get('/:id',(request, response)=>{
 });
 
 router.post('/',(request,response)=>{
+    console.log()
     user.create(request.body.username, request.body.email,request.body.password)
         .then(()=>{
             response.send("Creado Perfectamente");
             response.send(user);
         })
         .catch(()=>{
-            response.headers;
+            response.send("Uoooops error");
         })
 })
 router.patch('/:id',(request, response)=>{

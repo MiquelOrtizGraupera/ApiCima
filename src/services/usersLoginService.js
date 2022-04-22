@@ -7,7 +7,7 @@ class usersLoginService{
     }
 
      create(userName, userEmail, userPassword){
-        return new Promise((async (resolve, reject) => {
+        return new Promise(async (resolve, reject) => {
             if (userName === null || userEmail === null | userPassword === null) {
                 return reject("Faltan datos!")
             }
@@ -16,15 +16,18 @@ class usersLoginService{
                 email: userEmail,
                 password: userPassword
             }
-            const pass = new Verify();
-            fullInfo.password = await pass.hashPassword(fullInfo.password);
-
-            console.log(fullInfo.password)
-
-            // this.userList.push(fullInfo);
-            const myUser = new Model(fullInfo);
-            resolve(myUser.save());
-        }))
+            console.log(userName)
+            console.log(userEmail)
+            console.log(userPassword)
+            // const pass = new Verify();
+            // fullInfo.password = await pass.hashPassword(fullInfo.password);
+            //
+            // console.log(fullInfo.password)
+            //
+            // // this.userList.push(fullInfo);
+            // const myUser = new Model(fullInfo);
+            // myUser.save();
+        })
     }
 
     async find(){
