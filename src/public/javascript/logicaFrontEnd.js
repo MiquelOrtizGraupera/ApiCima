@@ -1,5 +1,3 @@
-const findOne = require("../../services/loginPageService")
-const log = new findOne();
 //REQUEST CONST
 const requestPage = new XMLHttpRequest();
 const requestLogIn = new XMLHttpRequest();
@@ -21,7 +19,8 @@ function FetchDataLogInUser(url_api, callback){
 
 
 function LogIn(){
-    FetchDataLogInUser("http://localhost:3000/api/v1/logIn", function (error, data){
+    FetchDataLogInUser("http://localhost:3000/api/v1/static/addUser", function (error, data){
+        console.log(data);
         if(error) console.log(error);
         else{
             let user = document.getElementById("nombreUsuario");
@@ -31,9 +30,6 @@ function LogIn(){
             let passDef = password.textContent;
             console.log(userDef);
             console.log(passDef);
-            log.findOne(userDef, passDef)
-                .then(r => console.log(r))
-                .catch(e => console.log(e));
         }
     })
 }
