@@ -19,14 +19,15 @@ class usersLoginService{
             console.log(userName)
             console.log(userEmail)
             console.log(userPassword)
-            // const pass = new Verify();
-            // fullInfo.password = await pass.hashPassword(fullInfo.password);
-            //
-            // console.log(fullInfo.password)
-            //
-            // // this.userList.push(fullInfo);
-            // const myUser = new Model(fullInfo);
-            // myUser.save();
+            const pass = new Verify();
+            fullInfo.password = await pass.hashPassword(fullInfo.password);
+
+            console.log(fullInfo.password)
+
+            this.userList.push(fullInfo);
+            const myUser = new Model(fullInfo);
+            myUser.save();
+            return resolve("Creado!")
         })
     }
 

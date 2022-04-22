@@ -25,7 +25,6 @@ router.get('/:id',(request, response)=>{
 });
 
 router.post('/',(request,response)=>{
-    console.log()
     user.create(request.body.username, request.body.email,request.body.password)
         .then(()=>{
             response.send("Creado Perfectamente");
@@ -34,6 +33,7 @@ router.post('/',(request,response)=>{
         .catch(()=>{
             response.send("Uoooops error");
         })
+
 })
 router.patch('/:id',(request, response)=>{
     user.update(request.params.id, request.body.username,request.body.email,request.body.password)
