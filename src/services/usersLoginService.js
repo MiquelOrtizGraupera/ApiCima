@@ -11,23 +11,24 @@ class usersLoginService{
             if (userName === null || userEmail === null | userPassword === null) {
                 return reject("Faltan datos!")
             }
-            const fullInfo = {
-                username: userName,
-                email: userEmail,
-                password: userPassword
+            else{
+                const fullInfo = {
+                    username: userName,
+                    email: userEmail,
+                    password: userPassword
+                }
+                console.log(userName)
+                console.log(userEmail)
+                console.log(userPassword)
+                const pass = new Verify();
+                fullInfo.password = await pass.hashPassword(fullInfo.password);
+
+                console.log(fullInfo.password)
+
+                this.userList.push(fullInfo);
+                const myUser = new Model(fullInfo);
+                return resolve(myUser.save())
             }
-            console.log(userName)
-            console.log(userEmail)
-            console.log(userPassword)
-            const pass = new Verify();
-            fullInfo.password = await pass.hashPassword(fullInfo.password);
-
-            console.log(fullInfo.password)
-
-            this.userList.push(fullInfo);
-            const myUser = new Model(fullInfo);
-            myUser.save();
-            return resolve("Creado!")
         })
     }
 

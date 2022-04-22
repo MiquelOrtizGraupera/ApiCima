@@ -28,7 +28,6 @@ router.post('/',(request,response)=>{
     user.create(request.body.username, request.body.email,request.body.password)
         .then(()=>{
             response.send("Creado Perfectamente");
-            response.send(user);
         })
         .catch(()=>{
             response.send("Uoooops error");
