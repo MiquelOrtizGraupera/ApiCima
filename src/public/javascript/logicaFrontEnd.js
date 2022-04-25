@@ -1,3 +1,4 @@
+
 //REQUEST CONST
 const requestPage = new XMLHttpRequest();
 const requestLogIn = new XMLHttpRequest();
@@ -17,7 +18,14 @@ function FetchDataLogInUser(url_api, callback){
     requestLogIn.send();
 }
 
+function hashPassword(myPassword){
+    const hash = bcrypt.hash(myPassword, 10);
+    console.log(hash);
+}
 
+function verifyPassword(hashPassword, myPassword){
+    return bcrypt.compare(myPassword, hashPassword)
+}
 function LogIn(){
     FetchDataLogInUser("http://localhost:3000/api/v1/static/addUser", function (error, data){
         console.log(data);
@@ -26,9 +34,11 @@ function LogIn(){
             let user = document.getElementById("nombreUsuario").value;
             let password = document.getElementById("passwordUsuario").value;
 
+
             for (let i = 0; i < data.userList.length ; i++) {
-                if(user === data.userList[i].username){
+                if(user === data.userList[i].username && verifyPassword(password,data.userList[i].password) === true){
                     console.log("El usuario existe");
+                    console.log("Password coincide");
                     window.location.replace("http://localhost:3000/api/v1/static/html/index.html")
 
                 }else{
