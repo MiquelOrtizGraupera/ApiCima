@@ -29,7 +29,8 @@ function LogIn(){
             for (let i = 0; i < data.userList.length ; i++) {
                 if(user === data.userList[i].username){
                     console.log("El usuario existe");
-                    break
+                    window.location.replace("http://localhost:3000/api/v1/static/html/index.html")
+
                 }else{
                     console.log("El usuario no existe");
                 }
@@ -67,9 +68,9 @@ function onloadBodyMan(){
                 let p1 = document.getElementById("descriptionProduct"+i);
                 let p2 = document.getElementById("priceProduct"+i);
                 let infoImage = data.manProducts[i].file;
-                let infoName = document.createTextNode(data.manProducts[i].product.toString());
+                let infoName = document.createTextNode(data.manProducts[i].product);
                 let infoDescription = document.createTextNode(data.manProducts[i].description.toString());
-                let infoPrice = document.createTextNode(data.manProducts[i].price.toString());
+                let infoPrice = document.createTextNode(data.manProducts[i].price);
                 img.setAttribute("src","/api/v1/static/uploads/"+infoImage);
                 h4.append(infoName);
                 p1.append(infoDescription);
