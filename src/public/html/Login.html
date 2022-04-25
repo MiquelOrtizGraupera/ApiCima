@@ -11,7 +11,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;500;700&display=swap" rel="stylesheet">
     <title>CIMA LogIn</title>
 </head>
-<body onload="LogIn()">
+<body>
 <div class=centerBox>
     <img id="imagenLogo" src="../resources/LogoNoMargin.png"/>
     <form id="formLogin">
@@ -22,15 +22,13 @@
         <input type="password" id="passwordUsuario" placeholder="********"
                class="input-password">
 
-        <input type="button" class="login" onsubmit="GoIndex" value="Enviar">
+        <input type="button" class="login" onsubmit="GoIndex" onclick="LogIn()" value="Enviar">
         <button class="goToRegister"><a href="myAccount.html">Registrate</a></button>
 
         <a class="aDelLogin" href="forgotPassword.html">Forgot my password</a>
     </form>
 </div>
 
-<button><a href="index.html">GoToIndex</a></button>
-<button><a href="myAccount.html">LogIn</a></button>
 <script src="../javascript/logicaFrontEnd.js"></script>
 </body>
 </html>

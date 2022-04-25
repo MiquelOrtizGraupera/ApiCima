@@ -23,13 +23,17 @@ function LogIn(){
         console.log(data);
         if(error) console.log(error);
         else{
-            let user = document.getElementById("nombreUsuario");
-            let password = document.getElementById("passwordUsuario");
+            let user = document.getElementById("nombreUsuario").value;
+            let password = document.getElementById("passwordUsuario").value;
 
-            let userDef = user.textContent;
-            let passDef = password.textContent;
-            console.log(userDef);
-            console.log(passDef);
+            for (let i = 0; i < data.userList.length ; i++) {
+                if(user === data.userList[i].username){
+                    console.log("El usuario existe");
+                    break
+                }else{
+                    console.log("El usuario no existe");
+                }
+            }
         }
     })
 }
