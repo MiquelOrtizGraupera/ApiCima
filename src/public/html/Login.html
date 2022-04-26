@@ -22,13 +22,16 @@
         <input type="password" id="passwordUsuario" placeholder="********"
                class="input-password">
 
-        <input type="button" class="login" onsubmit="GoIndex" onclick="LogIn()" value="Enviar">
+        <input type="button" class="login" onclick="LogIn()" value="Enviar">
         <button class="goToRegister"><a href="myAccount.html">Registrate</a></button>
 
         <a class="aDelLogin" href="forgotPassword.html">Forgot my password</a>
     </form>
 </div>
-
+<script>
+    const isTrue = verifyPassword()
+</script>
 <script src="../javascript/logicaFrontEnd.js"></script>
+<script src="../../auth/pass-verify.js"></script>
 </body>
 </html>

@@ -1,3 +1,4 @@
+import bcrypt from 'bcrypt';
 
 //REQUEST CONST
 const requestPage = new XMLHttpRequest();
@@ -18,13 +19,10 @@ function FetchDataLogInUser(url_api, callback){
     requestLogIn.send();
 }
 
-function hashPassword(myPassword){
-    const hash = bcrypt.hash(myPassword, 10);
-    console.log(hash);
-}
-
 function verifyPassword(hashPassword, myPassword){
-    return bcrypt.compare(myPassword, hashPassword)
+    let isTrue = bcrypt.compare(myPassword, hashPassword)
+    console.log(isTrue);
+    return isTrue;
 }
 function LogIn(){
     FetchDataLogInUser("http://localhost:3000/api/v1/static/addUser", function (error, data){
@@ -49,7 +47,7 @@ function LogIn(){
     })
 }
 
-
+function returnHashedPassword(){}
 
 function fetchData(url_api, callback){
      // const xhttp = new XMLHttpRequest();

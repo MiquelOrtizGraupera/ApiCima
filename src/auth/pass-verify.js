@@ -11,7 +11,7 @@ class UserVerify{
     }
 
     async verifyPassword(hashedPassword,myPassword){
-        return await bcrypt.compare(myPassword, hashedPassword);
+        return bcrypt.compare(myPassword, hashedPassword);
     }
 
 }
