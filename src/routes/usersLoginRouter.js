@@ -30,7 +30,7 @@ router.post('/',(request,response)=>{
     let password = request.body.password;
     user.create(username, email,password)
         .then(()=>{
-            response.send(`Username: ${username} Email: ${email} Password: ${password}`);
+            response.send("Creado correctamente");
         })
         .catch(()=>{
             response.send("Uoooops error");

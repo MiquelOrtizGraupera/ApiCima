@@ -3,39 +3,8 @@
 //REQUEST CONST
 const requestPage = new XMLHttpRequest();
 const requestLogIn = new XMLHttpRequest();
-const requestPostUser = new XMLHttpRequest();
 
-function FetchPostDataUser(url_api, callback){
-    requestPostUser.open('POST', url_api, true);
-    requestPostUser.onreadystatechange = function (event){
-        event.preventDefault();
-        if(requestPostUser.readyState ===4){
-            if(requestPostUser.status === 200){
-                callback(null, JSON.parse(requestPostUser.responseText))
-            }else{
-                const error = new Error("Error"+ url_api);
-                return callback(error, null)
-            }
-        }
-    }
-    requestPostUser.send();
-}
 
-function PostDataUser(){
-    FetchPostDataUser("http://localhost:3000/api/v1/static/logIn", function (error, data){
-        if(error) console.log(error);
-        else{
-            let user = document.getElementById("nombreUsuario").value;
-            let email = document.getElementById("emailUsuario").value;
-            let password = document.getElementById("password").value;
-            let repeatPassword = document.getElementById("repeatPassword").value;
-
-            if(password === repeatPassword){
-                console.log("Siguiente nivel, password confirmado");
-            }
-        }
-    })
-}
 
 function FetchDataLogInUser(url_api, callback){
     requestLogIn.open('GET',url_api, true);
@@ -94,23 +63,54 @@ function fetchData(url_api, callback){
 
 function onloadBodyMan(){
     fetchData("http://localhost:3000/api/v1/static/manPage", function (error, data){
-        console.log(data.manProducts.length);
         if(error) return console.log(error);
-        else{
-            for (let i = 0; i < data.manProducts.length ; i++) {
-                let img = document.getElementById("productImage"+i);
-                let h4 = document.getElementById("productName"+i);
-                let p1 = document.getElementById("descriptionProduct"+i);
-                let p2 = document.getElementById("priceProduct"+i);
-                let infoImage = data.manProducts[i].file;
-                let infoName = document.createTextNode(data.manProducts[i].product);
-                let infoDescription = document.createTextNode(data.manProducts[i].description.toString());
-                let infoPrice = document.createTextNode(data.manProducts[i].price);
-                img.setAttribute("src","/api/v1/static/uploads/"+infoImage);
-                h4.append(infoName);
-                p1.append(infoDescription);
-                p2.append(infoPrice);
-            }
+        else {
+            for (let i = 0; i <data.manProducts.length ; i++) {
+            let cardContainer = document.getElementsByClassName("cards-containerMan");
+
+            let divItem = document.createElement("div");
+            divItem.setAttribute("class", "item");
+
+            cardContainer[0].appendChild(divItem);
+
+            let href = document.createElement("a");
+            href.setAttribute("href", "detail.html");
+            divItem.append(href);
+
+            let image = document.createElement("img");
+            image.setAttribute("id", "productImage" + i);
+            image.setAttribute("src","/api/v1/static/uploads/"+data.manProducts[i].file)
+            divItem.append(image);
+
+            let h4 = document.createElement("h4");
+            h4.setAttribute("id", "productName" + i);
+            h4.append(data.manProducts[i].product);
+            divItem.append(h4);
+
+            let p1 = document.createElement("p");
+            p1.setAttribute("id", "descriptionProduct" + i);
+            p1.append(data.manProducts[i].description);
+            divItem.append(p1);
+
+            let p2 = document.createElement("p");
+            p2.setAttribute("id", "priceProduct" + i);
+            p2.append(data.manProducts[i].price);
+            divItem.append(p2);
+        }
+            // for (let i = 0; i < data.manProducts.length ; i++) {
+            //     let img = document.getElementById("productImage"+i);
+            //     let h4 = document.getElementById("productName"+i);
+            //     let p1 = document.getElementById("descriptionProduct"+i);
+            //     let p2 = document.getElementById("priceProduct"+i);
+            //     let infoImage = data.manProducts[i].file;
+            //     let infoName = data.manProducts[i].product;
+            //     let infoDescription = data.manProducts[i].description;
+            //     let infoPrice = data.manProducts[i].price;
+            //     img.setAttribute("src","/api/v1/static/uploads/"+infoImage);
+            //     h4.append(infoName);
+            //     p1.append(infoDescription);
+            //     p2.append(infoPrice);
+            // }
         }
     })
 }
