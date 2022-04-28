@@ -1,22 +1,34 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" type="text/css" href="../styles/styles.css"/>
     <title>AddProduct</title>
 </head>
 <body>
 
+<div class="containerAddProduct">
+    <form action="/uploads" enctype="multipart/form-data" method="POST">
+        <input id="user" type="text" name="user" accept="multipart/form-data"/>
+        <label for="userAdd">Nombre Usuario</label>
+        <input type="text" id="userAdd" placeholder="mikeCima">
 
-<form action="/uploads" enctype="multipart/form-data" method="POST">
-    <input id="user" type="text" name="user" accept="multipart/form-data"/>
-    <label for="user" value="Nombre usuario"/>
+        <label for="genderAdd">Genero</label>
+        <select id="genderAdd" name="gender">
+            <option value="man">Hombre</option>
+            <option value="woman">Mujer</option>
+            <option value="kid">Niño/a</option>
+        </select>
 
-    <input type="file" name="myImage" accept="image/*" />
-    <input type="submit" value="Upload Photo"/>
-</form>
+
+        <input type="file" name="myImage" accept="image/*" />
+        <input type="submit" value="Upload Product"/>
+    </form>
+
+</div>
 
 </body>
 </html>

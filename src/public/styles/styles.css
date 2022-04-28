@@ -466,5 +466,13 @@ h2{
     }
 }
 
+/*ADD PRODUCT*/
+.containerAddProduct{
+    display: block;
+    background-color: var(--CimaWhite);
+    place-items: center;
+    place-content: center;
+}
+
 
 

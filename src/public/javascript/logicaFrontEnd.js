@@ -1,4 +1,4 @@
-import bcrypt from 'bcrypt';
+// import bcrypt from 'bcrypt';
 
 //REQUEST CONST
 const requestPage = new XMLHttpRequest();
@@ -34,10 +34,10 @@ function LogIn(){
 
 
             for (let i = 0; i < data.userList.length ; i++) {
-                if(user === data.userList[i].username && verifyPassword(password,data.userList[i].password) === true){
+                if(user === data.userList[i].username /*&& verifyPassword(password,data.userList[i].password) === true*/){
                     console.log("El usuario existe");
                     console.log("Password coincide");
-                    window.location.replace("http://localhost:3000/api/v1/static/html/index.html")
+                    window.location.replace("http://localhost:3000/api/v1/static/html/AddProduct.html")
 
                 }else{
                     console.log("El usuario no existe");
@@ -47,7 +47,6 @@ function LogIn(){
     })
 }
 
-function returnHashedPassword(){}
 
 function fetchData(url_api, callback){
      // const xhttp = new XMLHttpRequest();
