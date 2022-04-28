@@ -97,20 +97,6 @@ function onloadBodyMan(){
             p2.append(data.manProducts[i].price);
             divItem.append(p2);
         }
-            // for (let i = 0; i < data.manProducts.length ; i++) {
-            //     let img = document.getElementById("productImage"+i);
-            //     let h4 = document.getElementById("productName"+i);
-            //     let p1 = document.getElementById("descriptionProduct"+i);
-            //     let p2 = document.getElementById("priceProduct"+i);
-            //     let infoImage = data.manProducts[i].file;
-            //     let infoName = data.manProducts[i].product;
-            //     let infoDescription = data.manProducts[i].description;
-            //     let infoPrice = data.manProducts[i].price;
-            //     img.setAttribute("src","/api/v1/static/uploads/"+infoImage);
-            //     h4.append(infoName);
-            //     p1.append(infoDescription);
-            //     p2.append(infoPrice);
-            // }
         }
     })
 }
@@ -121,21 +107,37 @@ function onloadBodyWoman(){
         if(error) return console.log(error);
         else{
             for (let i = 0; i < data.womanProducts.length ; i++) {
+                let cardContainer = document.getElementsByClassName("cards-containerWomen");
 
-                let img = document.getElementById("wimgProduct"+i);
-                let h4 = document.getElementById("wnameProduct"+i);
-                let p1 = document.getElementById("wdescriptionProduct"+i);
-                let p2 = document.getElementById("wpriceProduct"+i);
+                let divItem = document.createElement("div");
+                divItem.setAttribute("class", "item");
 
-                let infoImg = data.womanProducts[i].file;
-                let infoName = data.womanProducts[i].product;
-                let infoDescription = data.womanProducts[i].description;
-                let infoPrice = data.womanProducts[i].price;
+                cardContainer[0].appendChild(divItem);
 
-                img.setAttribute("src","/api/v1/static/uploads/"+infoImg);
-                h4.append(infoName);
-                p1.append(infoDescription);
-                p2.append(infoPrice);
+                let href = document.createElement("a");
+                href.setAttribute("href", "detail.html");
+                divItem.append(href);
+
+                let image = document.createElement("img");
+                image.setAttribute("id", "wproductImage" + i);
+                image.setAttribute("src","/api/v1/static/uploads/"+data.womanProducts[i].file)
+                divItem.append(image);
+
+                let h4 = document.createElement("h4");
+                h4.setAttribute("id", "wproductName" + i);
+                h4.append(data.womanProducts[i].product);
+                divItem.append(h4);
+
+                let p1 = document.createElement("p");
+                p1.setAttribute("id", "wdescriptionProduct" + i);
+                p1.append(data.womanProducts[i].description);
+                divItem.append(p1);
+
+                let p2 = document.createElement("p");
+                p2.setAttribute("id", "wpriceProduct" + i);
+                p2.append(data.womanProducts[i].price);
+                divItem.append(p2);
+
             }
         }
     })
@@ -146,21 +148,37 @@ function onloadBodyKid(){
         if(error) return console.log(error);
         else{
             for (let i = 0; i < data.kidsProducts.length; i++) {
+                let cardContainer = document.getElementsByClassName("cards-containerKid");
 
-                let img = document.getElementById("kimgProduct"+i);
-                let h4 = document.getElementById("knameProduct"+i);
-                let p1 = document.getElementById("kdescriptionProduct"+i);
-                let p2 = document.getElementById("kpriceProduct"+i);
+                let divItem = document.createElement("div");
+                divItem.setAttribute("class", "item");
 
-                let infoImg = data.kidsProducts[i].file;
-                let infoName = data.kidsProducts[i].product;
-                let infoDescription = data.kidsProducts[i].description;
-                let infoPrice = data.kidsProducts[i].price;
+                cardContainer[0].appendChild(divItem);
 
-                img.setAttribute("src","/api/v1/static/uploads/"+infoImg);
-                h4.append(infoName);
-                p1.append(infoDescription);
-                p2.append(infoPrice);
+                let href = document.createElement("a");
+                href.setAttribute("href", "detail.html");
+                divItem.append(href);
+
+                let image = document.createElement("img");
+                image.setAttribute("id", "kproductImage" + i);
+                image.setAttribute("src","/api/v1/static/uploads/"+data.kidsProducts[i].file)
+                divItem.append(image);
+
+                let h4 = document.createElement("h4");
+                h4.setAttribute("id", "kproductName" + i);
+                h4.append(data.kidsProducts[i].product);
+                divItem.append(h4);
+
+                let p1 = document.createElement("p");
+                p1.setAttribute("id", "kdescriptionProduct" + i);
+                p1.append(data.kidsProducts[i].description);
+                divItem.append(p1);
+
+                let p2 = document.createElement("p");
+                p2.setAttribute("id", "kpriceProduct" + i);
+                p2.append(data.kidsProducts[i].price);
+                divItem.append(p2);
+
             }
         }
     })
