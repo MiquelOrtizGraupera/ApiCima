@@ -23,10 +23,10 @@
             <input class="inputEmailMyAccount" type="text" id="emailUsuario" placeholder="cima@gmail.com">
 
             <label>Password</label>
-            <input type="password" class="passwordMyAccount" placeholder="********"
+            <input type="password" class="passwordMyAccount" id="password" placeholder="********"
                    class="input-password">
             <label>Repeat Password</label>
-            <input type="password" class="passwordMyAccount" placeholder="********"
+            <input type="password" class="passwordMyAccount" id="repeatPassword" placeholder="********"
                    class="input-password">
 
             <input type="submit"  value="Enviar">
@@ -34,7 +34,38 @@
     </div>
 
 </div>
+<script>
+    const form = document.getElementById('formLoginMyAccount')
+    form.addEventListener('submit', registerUser)
 
-<button><a href="index.html">GoToIndex</a></button>
+    async function registerUser(event){
+        event.preventDefault()
+        const user = document.getElementById('nombreUsuario').value;
+        const email = document.getElementById('emailUsuario').value;
+        const password = document.getElementById("password").value;
+        const repeatPassword = document.getElementById('repeatPassword').value;
+
+        if(password === repeatPassword){
+            const postUser = await fetch('http://localhost:3000/api/v1/static/addUser',{
+                method: 'POST',
+                headers:{
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    username: user,
+                    email : email,
+                    password : password
+                })
+            }).then((res) => res.json())
+        }else{
+            alert("El password no coincide");
+        }
+    }
+    window.location.replace("http://localhost:3000/api/v1/static/html/index.html")
+
+
+
+
+</script>
 </body>
 </html>

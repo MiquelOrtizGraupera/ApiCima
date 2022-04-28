@@ -1,8 +1,41 @@
-// import bcrypt from 'bcrypt';
+// const bcrypt = require('bcrypt');
 
 //REQUEST CONST
 const requestPage = new XMLHttpRequest();
 const requestLogIn = new XMLHttpRequest();
+const requestPostUser = new XMLHttpRequest();
+
+function FetchPostDataUser(url_api, callback){
+    requestPostUser.open('POST', url_api, true);
+    requestPostUser.onreadystatechange = function (event){
+        event.preventDefault();
+        if(requestPostUser.readyState ===4){
+            if(requestPostUser.status === 200){
+                callback(null, JSON.parse(requestPostUser.responseText))
+            }else{
+                const error = new Error("Error"+ url_api);
+                return callback(error, null)
+            }
+        }
+    }
+    requestPostUser.send();
+}
+
+function PostDataUser(){
+    FetchPostDataUser("http://localhost:3000/api/v1/static/logIn", function (error, data){
+        if(error) console.log(error);
+        else{
+            let user = document.getElementById("nombreUsuario").value;
+            let email = document.getElementById("emailUsuario").value;
+            let password = document.getElementById("password").value;
+            let repeatPassword = document.getElementById("repeatPassword").value;
+
+            if(password === repeatPassword){
+                console.log("Siguiente nivel, password confirmado");
+            }
+        }
+    })
+}
 
 function FetchDataLogInUser(url_api, callback){
     requestLogIn.open('GET',url_api, true);
@@ -19,11 +52,6 @@ function FetchDataLogInUser(url_api, callback){
     requestLogIn.send();
 }
 
-function verifyPassword(hashPassword, myPassword){
-    let isTrue = bcrypt.compare(myPassword, hashPassword)
-    console.log(isTrue);
-    return isTrue;
-}
 function LogIn(){
     FetchDataLogInUser("http://localhost:3000/api/v1/static/addUser", function (error, data){
         console.log(data);
@@ -34,7 +62,7 @@ function LogIn(){
 
 
             for (let i = 0; i < data.userList.length ; i++) {
-                if(user === data.userList[i].username /*&& verifyPassword(password,data.userList[i].password) === true*/){
+                if(user === data.userList[i].username){
                     console.log("El usuario existe");
                     console.log("Password coincide");
                     window.location.replace("http://localhost:3000/api/v1/static/html/AddProduct.html")

@@ -6,7 +6,7 @@ class usersLoginService{
         this.userList = [];
     }
 
-     create(userName, userEmail, userPassword){
+    async create(userName, userEmail, userPassword){
         return new Promise(async (resolve, reject) => {
             if (userName === null || userEmail === null | userPassword === null) {
                 return reject("Faltan datos!")

@@ -25,9 +25,12 @@ router.get('/:id',(request, response)=>{
 });
 
 router.post('/',(request,response)=>{
-    user.create(request.body.username, request.body.email,request.body.password)
+    let username = request.body.username;
+    let email = request.body.email;
+    let password = request.body.password;
+    user.create(username, email,password)
         .then(()=>{
-            response.send("Creado Perfectamente");
+            response.send(`Username: ${username} Email: ${email} Password: ${password}`);
         })
         .catch(()=>{
             response.send("Uoooops error");
