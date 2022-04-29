@@ -22,12 +22,38 @@
         <input type="password" id="passwordUsuario" placeholder="********"
                class="input-password">
 
-        <input type="button" class="login" onclick="LogIn()" value="Enviar">
+        <input type="submit" class="login"  value="Enviar">
         <button class="goToRegister"><a href="myAccount.html">Registrate</a></button>
 
         <a class="aDelLogin" href="forgotPassword.html">Forgot my password</a>
     </form>
 </div>
+<script>
+    const form  = document.getElementById("formLogin");
+    form.addEventListener("submit",checkUser);
+
+    async function checkUser(event){
+        event.preventDefault();
+
+        const userName = document.getElementById("nombreUsuario").value;
+        const password = document.getElementById("passwordUsuario").value;
+        console.log(userName)
+        console.log(password)
+        await fetch("http://localhost:3000/api/v1/static/logIn",{
+            method:'POST',
+            headers:{
+                'Content-Type':'application/json'
+            },
+            body: JSON.stringify({
+              username: userName,
+              password: password
+            })
+        }).then((res) => {
+            console.log(res.redirected);
+            console.log(res)
+        })
+    }
+</script>
 <script src="../javascript/logicaFrontEnd.js"></script>
 </body>
 </html>

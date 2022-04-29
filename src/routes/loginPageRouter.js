@@ -4,18 +4,15 @@ const Login = require("../services/loginPageService");
 
 const log = new Login();
 
-router.get('/',(request,response)=>{
+router.post('/',(request,response)=>{
 
     log.findOne(request.body.username,request.body.password)
-        .then((isValid)=>{
-           if(isValid){
-               response.send(log);
-           }else {
-               response.send("Error");
-           }
+        .then((res) =>{
+            console.log(res)
+            response.send(res);
         })
         .catch(() =>{
-            response.send("Error");
+            response.send("Error del catch");
         })
 })
 
